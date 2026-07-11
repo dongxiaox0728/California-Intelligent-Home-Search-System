@@ -1,0 +1,266 @@
+[
+  {
+    "row": 0,
+    "cleaned_remarks": "discover the epitome of luxury living in brentwood s most coveted areas, north saltair. nestled on an expansive, meticulously landscaped lot, this prestigious estate offers the perfect blend of privacy and convenience. enjoy the serenity of lush lavender gardens and ample outdoor space with room for sports courts if desired , all within minutes of brentwood s finest amenities. this marvelously designed and recently renovated residence boasts spacious updated interiors, ideal for both grand entertaining and relaxed family living.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": []
+    }
+  },
+  {
+    "row": 1,
+    "cleaned_remarks": "great opportunity in a desirable gated community! this well-maintained home features 3 bedrooms and 2.5 bathrooms with a functional and spacious layout. the large kitchen offers ample cabinet and counter space, ideal for everyday living and entertaining. each bedroom includes a balcony, providing added comfort and outdoor enjoyment. additional highlights include a two-car garage and access to excellent homeowners association amenities, including two swimming pools, a sauna, and tennis courts. this secure and welcoming community offers a perfect balance of privacy, convenience, and a relaxed lifestyle.",
+    "extracted_entities": {
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "garage",
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 2,
+    "cleaned_remarks": "built in 2018, this spacious 3bedroom, 3bath home in the university district offers 2507 square feet of modern living with an open and functional layout. the main level features a bright great room, dining area, and a contemporary kitchen with a large island, stainless steel appliances, and a walkin pantry. a flexible downstairs bonus room provides options for an office, guest space, or additional living area. upstairs includes a second bonus room and a generous primary suite with a soaking tub, separate shower, dual sinks, and a walkin closet. additional features include vinyl plank flooring, dualzone hvac, upstairs laundry with washer and dryer included, and a 2car garage. the lowmaintenance backyard offers a stamped concrete patio ideal for outdoor seating and dining. the home also includes paidoff solar, providing ongoing energy savings. located near parks, trails, sonoma state university, and the green music center. homeowners association includes front yard maintenance. movein ready with a versatile floor plan in a growing community.",
+    "extracted_entities": {
+      "bedrooms": 3,
+      "bathrooms": 3.0,
+      "price": null,
+      "sqft": 2507,
+      "amenities": [
+        "garage",
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 3,
+    "cleaned_remarks": "poised on one of ocean colony s largest lots overlooking the 12th fairway, this fully-updated colonial masterpiece blends coastal elegance with timeless sophistication. situated on a quiet cul-de-sac, the elegant facade and grand circular drive create a stunning first impression, while tesla powerwall and solar panels ensure this home is eco-friendly. sun-drenched interiors with east west exposure feature all new flooring, picture windows with hill and golf course views, and french doors for seamless indoor-outdoor flow. chef s kitchen is an epicurean dream with marble counters, massive island, wolf sub-zero appliances, pull-out shelves, and huge walk-in pantry. for the host, the bright formal dining room includes 300-bottle wine storage, sub-zero wine and beverage station, wet bar, while outdoors offers a low-maintenance yard with 3 large patios and custom bbq island. a grand living room plus 2 family rooms provide ultimate flexibility. upstairs, 4 en-suite bedrooms with panoramic views include a primary retreat with spa-inspired bathroom with steam shower, soaking tub custom closet. secret finished attic is a sky-lit sanctuary, studio or playroom. a rare custom property in northern californias premier coastal enclave.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": []
+    }
+  },
+  {
+    "row": 4,
+    "cleaned_remarks": "offered for only the second time in its history, the hendershot house was designed by richard neutra in 1962 and catalogued in dining room. barbara lamprecht s authoritative taschen monograph on the architect s complete works. the home represents neutra at his most refined ribbon windows, deep overhangs, full-height sliding glass walls, and a masterful response to a sloping canyon site sheltered by native trees and canyon plantings enjoyed from nearly every room in the house.what further distinguishes this property is its living evolution under neutra s own lineage a 1982 addition by son and partner dion neutra, and a 1994 addition by lead project architect john blanton - interventions of a caliber essentially unheard of in the neutra canon.current owner and architect eve steele completed an exemplary two-year rehabilitation guided by archival drawings and original correspondence from the hendershot estate and ucla archives. the renovation earned a 2023 aia la board of directors emerging practice award.spanning approximately 3371 square feet across three levels in upper nichols canyon, the entry level brings together an expanded kitchen and dining area, library, living room with fireplace, and a primary suite with bathroom and dressing room. three additional bedrooms, three baths, a second living room with fireplace, bar, and laundry occupy the second level. below, a flexible office or gym opens through glass walls to a broad wood terrace above a rare los angeles natural creek and wooded arroyo. rich hardwood floors, floating stairs, four outdoor decks, new foundation walls, a full security system, an ev-ready two-car garage, and fully updated systems complete a home that is as sound and presently livable as it is historically irreplaceable.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": 3371,
+      "amenities": [
+        "garage",
+        "fireplace"
+      ]
+    }
+  },
+  {
+    "row": 5,
+    "cleaned_remarks": "exceptional value in ontario ranch s grand park community! offering nearly 3000 square feet of living space, this spacious 5-bedroom, 3-bathroom home presents an incredible opportunity for buyers seeking size, functionality, and value. built by lennar in 2018, this well-designed two-story residence features a highly desirable floor plan with a main-level bedroom and full bathroom, ideal for guests, extended family, or a home office. the open-concept kitchen flows seamlessly into the living and dining areas, creating a comfortable space for everyday living and entertaining. upstairs, you ll find a versatile loft, a generous primary suite with dual vanities and a large walk-in closet, three additional bedrooms, and a convenient laundry room. the home is equipped with a leased solar system for energy efficiency and a recently installed tankless water heater, providing added value and peace of mind. located just steps from the community clubhouse, residents enjoy resort-style amenities including a swimming pool, spa, playground, and beautifully maintained common areas. conveniently situated near freeways 60, 15, 91, and 71, with easy access to costco, 99 ranch market, shopping centers, restaurants, and top local conveniences. with nearly 3000 square feet, 5 bedrooms, 3 full bathrooms, and one of the most competitively priced opportunities in the neighborhood, this home offers exceptional potential for buyers looking to personalize and make it their own. please verify all info.",
+    "extracted_entities": {
+      "bedrooms": 5,
+      "bathrooms": 3.0,
+      "price": null,
+      "sqft": 3000,
+      "amenities": [
+        "pool"
+      ]
+    }
+  },
+  {
+    "row": 6,
+    "cleaned_remarks": "welcome to 3641 greenfield ave, a charming single-family home located on the highly desirable westside of los angeles. this inviting two-bedroom, one-bathroom residence offers 1148 square feet of living space, presenting a rare opportunity for both end-users and developers alike. the home features a functional layout with spacious living areas and generously sized bedrooms. while the property maintains its original charm, it also presents as a fixer with incredible potential, ideal for those looking to renovate, reimagine, or create their dream home. the private backyard offers ample space for outdoor entertaining, gardening, or future expansion, making it a true blank canvas for customization. zoned rd2, this property unlocks significant development potential, providing the opportunity to build a duplex or explore additional value-add options. whether you re a developer seeking your next project or an end-user looking to personalize a home in a prime location, the possibilities here are substantial.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": 1148,
+      "amenities": []
+    }
+  },
+  {
+    "row": 7,
+    "cleaned_remarks": "welcome to descanso, a quaint town with a country vibe. two-story home nestled on a generous .76-acre lot filled with beautiful mature oak trees and a peaceful seasonal creek. this unique property offers endless potential for the right buyer looking to create their dream retreat. the home features 2 bedrooms plus a loft, along with a hidden room perfect for an office, studio, or creative space. great room with built in bar and high ceilings for your entertaining your family or guests. open and bright floorplan! large deck overlooks yard and seasonal creek. plenty of room for horses, chickens, gardening, or simply enjoying wide-open space. multiple parking areas provide ample space for rvs, trailers, or guests. with its natural setting and versatile land, this property is ideal for those seeking privacy, country living, or a renovation project with upside. bring your vision and make this your dream home in a serene, tree-studded setting",
+    "extracted_entities": {
+      "bedrooms": 2,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 8,
+    "cleaned_remarks": "stop scrolling this is the one that actually delivers! located in the summerly community of lake elsinore, this home delivers the open-concept layout, natural light, and space first-time buyers are looking for. the kitchen features granite countertops, ample cabinet space, and a large island that opens directly to the living area perfect for everyday living and hosting. upstairs you ll find spacious bedrooms, including a primary suite with plenty of room to unwind. the layout gives you flexibility to grow, whether you need extra rooms, office space, or both. out front, enjoy a welcoming covered porch, and out back, a low-maintenance yard with a clean patio space ready for relaxing or entertaining. located near parks, trails, and with easy access to the 15 freeway. if you ve been waiting for the right one, this is it.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 9,
+    "cleaned_remarks": "rarely available and exceptionally private, this expansive corner unit condominium offers the comfort of no shared walls. located ion the sought-after cortex hill neighborhood, one of downtown san diego s most peaceful residential enclaves, this home combines tranquility with urban convenience. the first floor residence features a private balcony, soaring ceilings, and oversized windows that fill the space with natural light. hardwood flooring enhances the kitchen and living areas, while new carpeting adds comfort to the generously sized bedrooms. the beautifully updated kitchen and bathrooms offer modern finishes and style, complemented by the convenience of in-unit laundry and abundant storage throughout. residents enjoy an impressive array of community amenities including secure underground parking, a swimming pool, spa, fitness center and bbq area. a wonderful opportunity to enjoy comfortable, low-maintenance living in one of downtown san diego s most desirable neighborhoods.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "kitchen",
+        "pool",
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 10,
+    "cleaned_remarks": "just reduced ! nestled in the charming community of cedarpines park, this small mountain home offers a cozy retreat for those seeking a peaceful escape. home is being sold as-is. in need of new septic and furnace seller will not install. also, grading and flow lines. 2 bedrooms and 1 bathroom, this recently updated home features fresh paint, new cabinetry, and modern stainless steel appliances including a range and refrigerator. surrounded by tranquil pine trees and crisp mountain air, this property is perfect for nature lovers looking to embrace the serene beauty of california s mountains. don t miss your chance to own this inviting oasis in cedarpines park!",
+    "extracted_entities": {
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "price": null,
+      "sqft": null,
+      "amenities": []
+    }
+  },
+  {
+    "row": 11,
+    "cleaned_remarks": "welcome to this beautifully renovated pasadena bungalow located in the highly desirable jefferson park neighborhood. blending timeless character with extensive modern upgrades, this 3-bedroom, 2-bathroom home offers comfort, efficiency, and pride of ownership throughout. thoughtfully improved from top to bottom, the home features new flooring, insulation, drywall, plumbing, windows, roof, and gutters, providing peace of mind for years to come. enjoy year-round comfort with a mini-split hvac system and ventilation fans, while abundant natural light highlights the home s inviting living spaces. outside, you ll discover a beautifully landscaped backyard designed for relaxation and functionality. enjoy a brand-new jacuzzi, a dedicated dog run pet area, and a storage shed for additional convenience. the yard has been meticulously maintained and enhanced with a wi-fi-enabled sprinkler system, creating a lush outdoor retreat perfect for entertaining, gardening, or simply enjoying pasadena s beautiful weather. additional upgrades include an upgraded electrical system, level 2 ev charging station, 13000-watt backup generator, and a new 4-panel garage door, making this home as practical as it is beautiful to turn into your next adu, or flex room ready for your imagination. located just minutes from old town pasadena, the rose bowl, parks, shopping, dining, and major commuter routes, this exceptional property offers the perfect combination of classic pasadena charm and modern-day living.",
+    "extracted_entities": {
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "garage"
+      ]
+    }
+  },
+  {
+    "row": 12,
+    "cleaned_remarks": "luxury resort style living at the met! great location for this end unit close proximity to 2nd floor elevator! upgraded 2 bedroom 2 bathroom condominium overlooking one of the four pool spa areas! new paint and new carpet! new kitchen with granite counter tops, stainless steel appliances! light and bright spacious living room with fireplace! laundry and storage area inside! 2 car tandem garage parking! no fwy exposures! the met located in the heart warner center, tree-lined street, guard gated! community that offers six lighted tennis courts, basketball and racquetball courts, full fitness center, children playground pools, spa! located within walking distance to major shoping, dining and entertainment in the warner center including new village, amc theater and warner center park with summer concerts! few blocks from the metro orange line! garage parking close to elevator 10p019, 10p020.",
+    "extracted_entities": {
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "garage",
+        "fireplace",
+        "pool"
+      ]
+    }
+  },
+  {
+    "row": 13,
+    "cleaned_remarks": "welcome to 783 catalina drive, a rare opportunity in the highly sought-after sunset west neighborhood. offering 2527 square feet, 6 bedrooms, 3 bathrooms, plus a dedicated office, this home delivers the space, versatility, and functionality that today s buyers have been searching for. designed with multigenerational living in mind, the thoughtfully designed floor plan features two primary bedroom suites, with three bedrooms and two bathrooms on the main level, and three additional bedrooms upstairs, creating ideal separation for extended family, guests, or work-from-home flexibility. inside, you ll find numerous upgrades including two fully renovated permitted bathrooms with delta faucets, marble stone shower floors, plus a spacious spa-inspired bathroom upstairs. refinished hardwood floors in living room and lower-level bedrooms, a stunning new oak staircase, and fresh interior paint, create a warm and inviting atmosphere throughout. the kitchen is ready for everyday living and entertaining, featuring granite countertops, maple cabinetry, stainless steel appliances, a gas stove, and indoor grill. an owned solar system and water softener add exceptional efficiency and long-term value, while the durable 40-year presidential shingle roof provides peace of mind. outside, enjoy low-maintenance front and backyards, where blooming hydrangeas create a welcoming first impression and a peaceful setting to relax and unwind. located just minutes from downtown livermore, award-winning wineries, shopping, dining, parks, access to commuter routes and outlets, this home offers the perfect balance of comfort, convenience, and flexibility. opportunities to find six bedrooms, dual primary suites with one offering its own fireplace, owned solar, and a versatile multigenerational floor plan in sunset west owned by the same owner for the last 60 years are few and far between. come experience all that 783 catalina drive has to offer before it s gone. offers due monday 6 22 by 12pm.",
+    "extracted_entities": {
+      "bedrooms": 6,
+      "bathrooms": 3.0,
+      "price": null,
+      "sqft": 2527,
+      "amenities": [
+        "fireplace"
+      ]
+    }
+  },
+  {
+    "row": 14,
+    "cleaned_remarks": "luxury home at a starter home price located in the prime scripps ranch community of timberlane. this is not a flip. this home has been meticulously renovated by the owners with intention, honoring a mid-century vibe with modern conveniences. each bathroom is furnished with classic west elm vanities, and high quality, timeless brass fixtures. the open kitchen is the heart of the home, complete with a waterfall central island of made of designer satin-finish marble quartzite with matching full-height backsplashes. a true entertainer s kitchen, complete with a high-end bosch refrigerator and induction electric oven with built-in air-fryer and fully vented range hood. vaulted ceilings elevate this home to the next level, with windows throughout at every corner that flood this home with natural sunlight. no carpet here, this home is complete with warm and durable french oak lvp. the upstairs loft makes the perfect open office space, yet can easily be turned into a 4th bedroom. outside, a fully-fenced, sun-drenched private patio awaits--perfect for relaxation and entertaining. homeowners association amenities include a clubhouse free for use , sparkling pool, two children s playgrounds, and multiple walking tree-lined walking trails throughout the community. a private two-car attached garage houses the in-unit washer dryer and provides ample additional storage space. centrally located, just minutes from the 15 freeway, trader joe s, vons, and the award-winning scripps ranch high school. va assumable loan available. video tour https vimeo.com 1188224112",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "garage",
+        "pool",
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 15,
+    "cleaned_remarks": "experience refined resort-style coastal living in this beautifully updated top-floor, corner unit condominium in the heart of point loma. this quiet interior facing condominium comes with some major upgrades - remodeled kitchen bathroom featuring a rain shower, dual pane windows, ceiling fans, upgraded electrical panel, new refrigerator, and new carpet paint. washer dryer in unit allowed with homeowners association approval! the condominium comes with one dedicated parking spot and one storage locker. optional to purchase the property fully furnished! complex features pool, hot tub, sauna, gym, game room, volleyball courts, tennis pickleball courts, laundry facility more! set within a gated, resort-style community, this one-bedroom, one-bathroom residence offers a rare combination of comfort, convenience, and timeless san diego lifestyle appeal.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "pool"
+      ]
+    }
+  },
+  {
+    "row": 16,
+    "cleaned_remarks": "ideally located in the highly desirable sunset park area, this charming and thoughtfully updated 2-bedroom, 1-bathroom home at 2822 11th st offers a warm blend of classic character, comfort, functionality, and flexible living space. natural light fills the inviting living room, highlighted by hardwood floors, recessed lighting, and an easy flow into the dining and kitchen areas. the bright galley-style kitchen features ample cabinetry, generous counter space, and a clean, modern feel perfect for everyday living. a washer and dryer are conveniently located in the home, and the kitchen door opens to a spacious outdoor area. the patio features a dedicated bbq area and an outdoor fireplace, creating the perfect setting for gatherings or quiet evenings at home.both bedrooms offer comfortable retreats with soft natural light and timeless finishes. the bathroom features both a tub and shower, combining comfort and practicality. the home also includes an attached bonus space that provides excellent flexibility for today s lifestyle needs, ideal for a home office, fitness room, creative studio, hobby space, or additional storage.surrounded by beautiful mature trees and vibrant bougainvillea, the property offers a sense of privacy and relaxation throughout the outdoor spaces. a private driveway adds everyday convenience and additional off-street parking.just moments from the beach and the best of santa monica s coastal lifestyle, the home offers quick access to ocean park beach and nearby main street, known for its vibrant mix of dining, cafs, and local favorites such as urth caff santa monica. enjoy close proximity to neighborhood parks, bike paths, and highly regarded local schools in the santa monica school district.with its functional layout, timeless charm, stylish updates, and versatile bonus area, 2822 11th st is a wonderful opportunity for buyers seeking both character and flexibility in a move-in-ready home.",
+    "extracted_entities": {
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "fireplace",
+        "outdoor_space"
+      ]
+    }
+  },
+  {
+    "row": 17,
+    "cleaned_remarks": "this property is in a excellent move in condition, 6 spacious bed rooms, 2.5 bathroom, in law quarter offce downstairs, separate familly rom, chef s kichen. beautiful cherry hard wood floors,compliment the downstair living room and sapcious dining room. the back yard is low maintenace oasis. with a inground pool and spa for thouse hot summer days. must see it to appreciate !",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": 2.5,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "pool"
+      ]
+    }
+  },
+  {
+    "row": 18,
+    "cleaned_remarks": "beautifully appointed tudor-style view home on 4.2 acres designed for refined equestrian living. thoughtful landscaping includes turf areas, river rock, pollinator shrubs, mature pines, trellises, and gated barn access. inside, vaulted ceilings and abundant natural light enhance the open living, dining, and kitchen areas with custom cabinetry, granite countertops, granite fireplace surround, and energy-efficient mullioned windows capturing sweeping valley, city-light, and san gabriel mountain views. porcelain wood-look tile with subfloor radiant heat adds comfort. the zen-inspired primary bathroom features a pebble-floor shower, rain head, marble double vanity, and spa-like finishes. a 3-car garage with workshop and two storage sheds add function. the 36x48 center-aisle barn offers eight 12x12 stalls six matted with paddock access , water, 110-power, crossties, and storage. enrichment turnout, arena space, sandy round-pen pad, and horse tough fencing complete this exceptional horse property.",
+    "extracted_entities": {
+      "bedrooms": null,
+      "bathrooms": null,
+      "price": null,
+      "sqft": null,
+      "amenities": [
+        "garage",
+        "fireplace"
+      ]
+    }
+  },
+  {
+    "row": 19,
+    "cleaned_remarks": "remodeled 4 bedroom and two and one half bathroom home has all new laminate floors and new interior and exterior paint. three bedrooms down and one terrific upstairs bedroom with 4 view windows. there is also a basement in the home with 192 square feet that could be made into a great wine cellar or canning area. it is very rare to have a basement home in california. the kitchen has been remodeled completely with all new cabinets and granite counter tops. asphalt driveway with an oversized one car garage with a brand new extra tall sectional garage door that can accommodate a large truck. there is also a huge carport that is very tall and extra wide and can accommodate two large vehicles or even an rv. both the home and carport have newer composition shingle roofs. now here s the real opportunity! this home comes with five lots with separate parcel numbers totaling a whopping 18138 square feet of land! they are all separate parcel numbers already so you can decide to do whatever you want with the vacant lots! you can develop the two back lots that are actually behind the home facing kiwanis trail? you could also develop the single fenced lot next to the carport? or you could decide to sell the lots after you buy the home for a cash profit? one parcel has the existing home on it. the second parcel has the giant two car carport on it. then there are the two additional lots directly behind the backyard behind the home and carport that have direct access off of kiwanis trail. plus the third additional lot next to the carport with its own gated access where you can drive a vehicle up behind the home. all five lots have separate apn numbers so you do not have to do any split for them. you could develop the three empty lots however you like. the rear lots also have many existing fruit trees on them. outstanding location in the heart of town right behind the new kern county library with great amenities for your family including internet access in the library for your kids. plus the home is within a 2 minute walk to the most popular community park in frazier park with new playground equipment, a fenced baseball softball field, a paved basketball court plus senior community center and public restrooms. great local schools and youth sports programs like ayso and little league make it a great place to raise a family. the new hardrock casino is also now open and just 20 minutes down the 5 freeway with fun entertainment and restaurants. just 30 minutes to scv.",
+    "extracted_entities": {
+      "bedrooms": 4,
+      "bathrooms": null,
+      "price": null,
+      "sqft": 192,
+      "amenities": [
+        "garage",
+        "basement"
+      ]
+    }
+  }
+]
