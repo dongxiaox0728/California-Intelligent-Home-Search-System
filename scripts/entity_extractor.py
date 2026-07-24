@@ -141,7 +141,7 @@ class EntityExtractor:
 
 
 if __name__ == "__main__":
-    extractor = EntityExtractor()
+    extractor = EntityExtractor("data/taxonomy_week3.json")
 
     text = (
         "beautiful 3 bedroom 2.5 bath home with 1850 sqft "
