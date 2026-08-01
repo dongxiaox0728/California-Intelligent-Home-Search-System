@@ -1,14 +1,4 @@
-"""
-Query parser for natural-language real-estate searches.
-
-Example:
-    parser = QueryParser()
-    filters = parser.parse("3 bed under 700k in Irvine with pool")
-    sql, params = parser.to_sql(filters)
-"""
-
 from __future__ import annotations
-
 import json
 import re
 from pathlib import Path
@@ -16,7 +6,6 @@ from typing import Any
 
 
 class QueryParser:
-    """Parse property-search text into validated filters and safe SQL."""
 
     DEFAULT_AMENITIES = {
         "pool",
@@ -68,7 +57,7 @@ class QueryParser:
         return filters
 
     def validate(self, filters: dict[str, Any]) -> None:
-        """Reject invalid or out-of-range filter values."""
+
         for key in ("price_min", "price_max"):
             if key in filters and not 0 <= filters[key] <= 100_000_000:
                 raise ValueError(f"{key} is outside the allowed range")
@@ -104,11 +93,7 @@ class QueryParser:
         filters: dict[str, Any],
         table_name: str = "rets_property",
     ) -> tuple[str, list[Any]]:
-        """
-        Generate parameterized MySQL SQL.
 
-        Values are returned separately in params to prevent SQL injection.
-        """
         self.validate(filters)
 
         conditions: list[str] = []

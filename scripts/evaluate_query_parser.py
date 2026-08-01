@@ -1,11 +1,3 @@
-"""
-Evaluate QueryParser accuracy using week4_query_examples.csv.
-
-Run from the project root:
-
-    python -m scripts.evaluate_query_parser
-"""
-
 from __future__ import annotations
 
 import csv
@@ -22,11 +14,7 @@ FAILURES_FILE = Path("data/processed/week4_parser_failures.csv")
 
 
 def normalize_filters(filters: dict[str, Any]) -> dict[str, Any]:
-    """
-    Normalize filters before comparison.
 
-    Amenity list order should not affect whether a prediction is correct.
-    """
     normalized = dict(filters)
 
     for key in ("amenities", "excluded_amenities"):
@@ -37,7 +25,7 @@ def normalize_filters(filters: dict[str, Any]) -> dict[str, Any]:
 
 
 def load_examples(path: Path) -> list[dict[str, Any]]:
-    """Load query examples and decode the expected JSON filters."""
+
     if not path.exists():
         raise FileNotFoundError(
             f"Could not find {path}. "
@@ -87,7 +75,7 @@ def evaluate(
     parser: QueryParser,
     examples: list[dict[str, Any]],
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    """Evaluate exact-match accuracy and collect failed examples."""
+
     correct = 0
     failures: list[dict[str, Any]] = []
 
@@ -134,7 +122,7 @@ def evaluate(
 
 
 def save_metrics(metrics: dict[str, Any], path: Path) -> None:
-    """Save the evaluation summary as JSON."""
+
     path.parent.mkdir(parents=True, exist_ok=True)
 
     with path.open("w", encoding="utf-8") as file:
@@ -142,7 +130,7 @@ def save_metrics(metrics: dict[str, Any], path: Path) -> None:
 
 
 def save_failures(failures: list[dict[str, Any]], path: Path) -> None:
-    """Save failed examples for easier debugging."""
+
     path.parent.mkdir(parents=True, exist_ok=True)
 
     with path.open("w", encoding="utf-8", newline="") as file:
