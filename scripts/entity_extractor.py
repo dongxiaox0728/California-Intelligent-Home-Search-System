@@ -91,44 +91,25 @@ class EntityExtractor:
         if not isinstance(text, str) or not text.strip():
             return []
 
-        amenity_groups = {
-            "garage": [
-                "attached garage",
-                "detached garage",
-                "garage",
-            ],
-            "kitchen": [
-                "updated kitchen",
-            ],
-            "basement": [
-                "finished basement",
-                "basement",
-            ],
-            "fireplace": [
-                "fireplace",
-            ],
-            "pool": [
-                "pool",
-            ],
-            "outdoor_space": [
-                "fenced yard",
-                "balcony",
-                "patio",
-                "deck",
-            ],
-        }
+        found_amenities = []
 
-        found_categories = []
+        # Use the Week 1 taxonomy loaded in __init__ instead of
+        # maintaining a separate hard-coded amenity list.
+        for item in self.taxonomy_terms:
+            if item.get("category") != "amenities":
+                continue
 
-        for category, terms in amenity_groups.items():
-            for term in terms:
-                pattern = rf"\b{re.escape(term)}\b"
+            term = str(item.get("term", "")).strip()
 
-                if re.search(pattern, text, re.IGNORECASE):
-                    found_categories.append(category)
-                    break
+            if not term:
+                continue
 
-        return found_categories
+            pattern = rf"\b{re.escape(term)}\b"
+
+            if re.search(pattern, text, re.IGNORECASE):
+                found_amenities.append(term)
+
+        return found_amenities
 
     def extract_all(self, text: str) -> dict[str, Any]:
         return {
@@ -141,7 +122,7 @@ class EntityExtractor:
 
 
 if __name__ == "__main__":
-    extractor = EntityExtractor("data/taxonomy_week3.json")
+    extractor = EntityExtractor("taxonomy/taxonomy_week1.json")
 
     text = (
         "beautiful 3 bedroom 2.5 bath home with 1850 sqft "

@@ -11,9 +11,6 @@ class QueryParser:
         "pool",
         "garage",
         "fireplace",
-        "outdoor_space",
-        "basement",
-        "kitchen",
     }
 
     AMENITY_ALIASES = {
@@ -31,7 +28,7 @@ class QueryParser:
     def __init__(
         self,
         listings_path: str | Path = "data/processed/listing_sample_cleaned.csv",
-        amenities_path: str | Path = "taxonomy/taxonomy_week3_amenities.json",
+        amenities_path: str | Path = "taxonomy/taxonomy_week1.json",
     ) -> None:
         self.valid_cities = self._load_cities(Path(listings_path))
         self.valid_amenities = self._load_amenities(Path(amenities_path))
@@ -326,12 +323,15 @@ class QueryParser:
             with path.open("r", encoding="utf-8") as file:
                 data = json.load(file)
 
-            if isinstance(data, list):
-                for item in data:
-                    extracted = item.get("extracted_entities", {})
-                    amenities.update(extracted.get("amenities", []))
-            elif isinstance(data, dict):
-                amenities.update(data.get("amenities", []))
+            if isinstance(data, dict):
+                for item in data.get("terms", []):
+                    if item.get("category") != "amenities":
+                        continue
+
+                    term = str(item.get("term", "")).strip()
+                    if term:
+                        amenities.add(term)
+
         except (FileNotFoundError, json.JSONDecodeError, OSError):
             pass
 

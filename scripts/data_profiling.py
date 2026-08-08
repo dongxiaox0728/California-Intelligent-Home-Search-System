@@ -105,7 +105,6 @@ def profile_column(df, column_name):
 
         "detected_mls_abbreviations": detect_mls_abbreviations(text_series),
 
-        "common_tokens": find_common_tokens(text_series, top_n=50),
     }
 
     return profile
@@ -113,7 +112,7 @@ def profile_column(df, column_name):
 
 def main():
     input_path = Path("data/processed/listing_sample.csv")
-    output_path = Path("data/processed/text_profile_report.json")
+    output_path = Path("data/processed/data_profile_report.json")
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     df = pd.read_csv(input_path)

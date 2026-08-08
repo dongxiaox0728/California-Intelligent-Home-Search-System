@@ -4,6 +4,7 @@ from collections import Counter
 
 import nltk
 import pandas as pd
+from nltk.corpus import stopwords
 from nltk.util import ngrams
 
 
@@ -12,56 +13,95 @@ OUTPUT_FILE = "data/processed/top_bigrams.csv"
 
 
 def download_nltk_resources():
-    """
-    Download tokenizer resources if they are not already installed.
-    """
-    try:
-        nltk.data.find("tokenizers/punkt")
-    except LookupError:
-        nltk.download("punkt")
+    """Download NLTK resources needed for tokenization and stopwords."""
+    resources = [
+        ("tokenizers/punkt", "punkt"),
+        ("corpora/stopwords", "stopwords"),
+    ]
+
+    for resource_path, download_name in resources:
+        try:
+            nltk.data.find(resource_path)
+        except LookupError:
+            nltk.download(download_name)
 
 
 def clean_text(text):
-    """
-    Lowercase text and remove unnecessary characters.
-    """
+    """Lowercase text and remove punctuation/special characters."""
     text = str(text).lower()
     text = re.sub(r"[^a-z0-9\s]", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
 
-def extract_bigrams(text_series, top_n=200):
+def get_stop_words():
     """
-    Extract the most common bigrams from listing remarks.
+    Use NLTK's standard English stopword list plus extra words that are
+    common in listing remarks but usually not useful taxonomy signals.
     """
-    all_text = " ".join(text_series.dropna().astype(str))
-    cleaned_text = clean_text(all_text)
+    stop_words = set(stopwords.words("english"))
 
-    tokens = nltk.word_tokenize(cleaned_text)
+    custom_stop_words = {
+        # General filler words
+        "just", "also", "even", "still", "really", "very", "much",
+        "many", "more", "most", "less", "well", "may", "might",
+        "could", "would", "should", "get", "gets", "got",
+        "make", "makes", "made", "come", "comes", "coming",
+        "see", "look", "looks", "looking",
 
-    stop_words = {
-        "the", "and", "for", "with", "this", "that", "you", "your",
-        "are", "was", "were", "from", "has", "have", "had", "not",
-        "but", "all", "can", "will", "home", "property", "house",
-        "unit", "room", "rooms", "area", "main", "new"
+        # Generic listing / real-estate words
+        "home", "property", "properties", "house", "unit", "units",
+        "room", "rooms", "area", "areas", "main",
+
+        # Marketing filler
+        "welcome", "beautiful", "charming", "amazing", "wonderful",
+        "perfect", "great", "rare", "opportunity", "lovely",
+        "stunning", "desirable", "fantastic", "gorgeous",
+
+        # Listing boilerplate
+        "please", "contact", "information", "buyer", "buyers",
+        "seller", "sellers", "agent", "agents", "listing", "listed",
+        "showing", "showings",
     }
 
-    tokens = [
-        token for token in tokens
-        if token not in stop_words and len(token) > 2
-    ]
+    return stop_words | custom_stop_words
 
-    bigram_list = list(ngrams(tokens, 2))
-    freq = Counter(bigram_list)
+
+def extract_bigrams(text_series, top_n=200):
+    """
+    Extract the top bigrams from listing remarks.
+
+    Each remark is processed independently so a bigram can never be formed
+    across the boundary between two different listings.
+
+    Bigrams are formed from the original token sequence. A bigram is kept only
+    when BOTH words are meaningful (not stopwords, not short tokens, not pure
+    numbers). This preserves true word adjacency.
+    """
+    stop_words = get_stop_words()
+    freq = Counter()
+
+    for text in text_series.dropna().astype(str):
+        cleaned_text = clean_text(text)
+        tokens = nltk.word_tokenize(cleaned_text)
+
+        for first, second in ngrams(tokens, 2):
+            if (
+                first not in stop_words
+                and second not in stop_words
+                and len(first) > 2
+                and len(second) > 2
+                and not first.isdigit()
+                and not second.isdigit()
+            ):
+                freq[(first, second)] += 1
 
     results = []
 
     for bigram, count in freq.most_common(top_n):
-        phrase = " ".join(bigram)
         results.append({
-            "bigram": phrase,
-            "count": count
+            "bigram": " ".join(bigram),
+            "count": count,
         })
 
     return pd.DataFrame(results)
@@ -82,7 +122,7 @@ def main():
     if "remarks" not in df.columns:
         raise ValueError("The CSV file must contain a column named 'remarks'.")
 
-    print("Extracting top bigrams...")
+    print("Extracting top 200 bigrams...")
     bigram_df = extract_bigrams(df["remarks"], top_n=200)
 
     bigram_df.to_csv(OUTPUT_FILE, index=False)

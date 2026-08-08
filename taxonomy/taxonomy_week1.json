@@ -1,25 +1,36 @@
 {
   "metadata": {
     "project": "real_estate_nlp",
-    "description": "Real estate terminology taxonomy generated from listing remark bigrams",
+    "description": "Real-estate terminology taxonomy generated from the top listing-remark bigrams and categorized for downstream NLP tasks.",
     "num_terms": 200,
-    "num_categories": 8
+    "num_categories": 8,
+    "uncategorized_count": 96,
+    "category_counts": {
+      "property_type": 4,
+      "interior_features": 23,
+      "exterior_features": 7,
+      "amenities": 14,
+      "property_condition": 12,
+      "layout_space": 34,
+      "location_features": 9,
+      "financing_terms": 1
+    }
   },
   "categories": [
+    "property_type",
     "interior_features",
     "exterior_features",
-    "location_neighborhood",
+    "amenities",
     "property_condition",
     "layout_space",
-    "financial_terms",
-    "utilities_systems",
-    "general_marketing"
+    "location_features",
+    "financing_terms"
   ],
   "terms": [
     {
       "id": "term_001",
       "term": "primary suite",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
       "id": "term_002",
@@ -29,12 +40,12 @@
     {
       "id": "term_003",
       "term": "car garage",
-      "category": "exterior_features"
+      "category": "amenities"
     },
     {
       "id": "term_004",
       "term": "floor plan",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
       "id": "term_005",
@@ -43,978 +54,978 @@
     },
     {
       "id": "term_006",
-      "term": "walk closet",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_007",
       "term": "everyday living",
       "category": "layout_space"
     },
     {
-      "id": "term_008",
+      "id": "term_007",
       "term": "stainless steel",
       "category": "interior_features"
     },
     {
-      "id": "term_009",
-      "term": "shopping dining",
-      "category": "location_neighborhood"
-    },
-    {
-      "id": "term_010",
-      "term": "bedroom bath",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_011",
-      "term": "pool spa",
-      "category": "exterior_features"
-    },
-    {
-      "id": "term_012",
+      "id": "term_008",
       "term": "steel appliances",
       "category": "interior_features"
     },
     {
-      "id": "term_013",
-      "term": "move ready",
-      "category": "property_condition"
-    },
-    {
-      "id": "term_014",
+      "id": "term_009",
       "term": "conveniently located",
       "category": "uncategorized"
     },
     {
-      "id": "term_015",
-      "term": "sought after",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_016",
+      "id": "term_010",
       "term": "open concept",
       "category": "layout_space"
     },
     {
-      "id": "term_017",
-      "term": "located near",
-      "category": "location_neighborhood"
+      "id": "term_011",
+      "term": "shopping dining",
+      "category": "location_features"
     },
     {
-      "id": "term_018",
-      "term": "just minutes",
+      "id": "term_012",
+      "term": "located near",
       "category": "uncategorized"
     },
     {
-      "id": "term_019",
+      "id": "term_013",
       "term": "resort style",
       "category": "uncategorized"
     },
     {
-      "id": "term_020",
+      "id": "term_014",
       "term": "indoor outdoor",
       "category": "uncategorized"
     },
     {
-      "id": "term_021",
-      "term": "bedrooms bathrooms",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_022",
-      "term": "living entertaining",
-      "category": "layout_space"
-    },
-    {
-      "id": "term_023",
-      "term": "its own",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_024",
-      "term": "bedroom bathroom",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_025",
+      "id": "term_015",
       "term": "outdoor living",
       "category": "layout_space"
     },
     {
-      "id": "term_026",
-      "term": "opportunity own",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_027",
-      "term": "rare opportunity",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_028",
+      "id": "term_016",
       "term": "square feet",
       "category": "uncategorized"
     },
     {
-      "id": "term_029",
+      "id": "term_017",
+      "term": "brand new",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_018",
       "term": "easy access",
       "category": "uncategorized"
     },
     {
-      "id": "term_030",
+      "id": "term_019",
       "term": "granite countertops",
       "category": "interior_features"
     },
     {
-      "id": "term_031",
+      "id": "term_020",
       "term": "thoughtfully designed",
       "category": "uncategorized"
     },
     {
-      "id": "term_032",
+      "id": "term_021",
       "term": "recessed lighting",
       "category": "uncategorized"
     },
     {
-      "id": "term_033",
-      "term": "living dining",
-      "category": "layout_space"
-    },
-    {
-      "id": "term_034",
-      "term": "washer dryer",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_035",
-      "term": "living areas",
-      "category": "layout_space"
-    },
-    {
-      "id": "term_036",
-      "term": "don miss",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_037",
+      "id": "term_022",
       "term": "year round",
       "category": "uncategorized"
     },
     {
-      "id": "term_038",
+      "id": "term_023",
       "term": "step outside",
       "category": "uncategorized"
     },
     {
-      "id": "term_039",
+      "id": "term_024",
       "term": "quartz countertops",
       "category": "interior_features"
     },
     {
-      "id": "term_040",
+      "id": "term_025",
       "term": "covered patio",
       "category": "exterior_features"
     },
     {
-      "id": "term_041",
+      "id": "term_026",
+      "term": "two car",
+      "category": "amenities"
+    },
+    {
+      "id": "term_027",
       "term": "spacious living",
       "category": "layout_space"
     },
     {
-      "id": "term_042",
-      "term": "two car",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_043",
+      "id": "term_028",
       "term": "soaking tub",
-      "category": "uncategorized"
+      "category": "interior_features"
     },
     {
-      "id": "term_044",
+      "id": "term_029",
       "term": "highlights include",
       "category": "uncategorized"
     },
     {
-      "id": "term_045",
+      "id": "term_030",
+      "term": "pool spa",
+      "category": "amenities"
+    },
+    {
+      "id": "term_031",
       "term": "beautifully maintained",
       "category": "property_condition"
     },
     {
-      "id": "term_046",
-      "term": "highly desirable",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_047",
+      "id": "term_032",
       "term": "low maintenance",
       "category": "uncategorized"
     },
     {
-      "id": "term_048",
+      "id": "term_033",
       "term": "living spaces",
       "category": "layout_space"
     },
     {
-      "id": "term_049",
+      "id": "term_034",
       "term": "additional highlights",
       "category": "uncategorized"
     },
     {
-      "id": "term_050",
-      "term": "cul sac",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_051",
+      "id": "term_035",
       "term": "beautifully updated",
       "category": "property_condition"
     },
     {
-      "id": "term_052",
-      "term": "most desirable",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_053",
-      "term": "perfect blend",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_054",
+      "id": "term_036",
       "term": "gated community",
-      "category": "uncategorized"
+      "category": "amenities"
     },
     {
-      "id": "term_055",
+      "id": "term_037",
       "term": "residence offers",
-      "category": "uncategorized"
+      "category": "property_type"
     },
     {
-      "id": "term_056",
-      "term": "designed both",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_057",
-      "term": "offers perfect",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_058",
+      "id": "term_038",
       "term": "abundant natural",
       "category": "uncategorized"
     },
     {
-      "id": "term_059",
+      "id": "term_039",
       "term": "amenities including",
       "category": "uncategorized"
     },
     {
-      "id": "term_060",
+      "id": "term_040",
       "term": "step inside",
       "category": "uncategorized"
     },
     {
-      "id": "term_061",
+      "id": "term_041",
       "term": "single story",
       "category": "layout_space"
     },
     {
-      "id": "term_062",
+      "id": "term_042",
       "term": "full bathroom",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_063",
+      "id": "term_043",
       "term": "highly sought",
       "category": "uncategorized"
     },
     {
-      "id": "term_064",
+      "id": "term_044",
       "term": "primary bedroom",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_065",
-      "term": "spacious primary",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_066",
+      "id": "term_045",
       "term": "additional bedrooms",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_067",
+      "id": "term_046",
       "term": "private balcony",
-      "category": "uncategorized"
+      "category": "exterior_features"
     },
     {
-      "id": "term_068",
+      "id": "term_047",
       "term": "full bath",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_069",
-      "term": "both everyday",
+      "id": "term_048",
+      "term": "spacious primary",
       "category": "uncategorized"
     },
     {
-      "id": "term_070",
+      "id": "term_049",
       "term": "multi generational",
       "category": "uncategorized"
     },
     {
-      "id": "term_071",
-      "term": "kitchen features",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_072",
+      "id": "term_050",
       "term": "flooring throughout",
       "category": "interior_features"
     },
     {
-      "id": "term_073",
-      "term": "walk shower",
-      "category": "uncategorized"
+      "id": "term_051",
+      "term": "kitchen features",
+      "category": "interior_features"
     },
     {
-      "id": "term_074",
+      "id": "term_052",
       "term": "spa inspired",
-      "category": "uncategorized"
+      "category": "amenities"
     },
     {
-      "id": "term_075",
+      "id": "term_053",
       "term": "vaulted ceilings",
-      "category": "uncategorized"
+      "category": "interior_features"
     },
     {
-      "id": "term_076",
+      "id": "term_054",
       "term": "direct access",
       "category": "uncategorized"
     },
     {
-      "id": "term_077",
+      "id": "term_055",
       "term": "open floor",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_078",
-      "term": "features include",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_079",
+      "id": "term_056",
       "term": "formal dining",
       "category": "layout_space"
     },
     {
-      "id": "term_080",
+      "id": "term_057",
       "term": "generously sized",
       "category": "uncategorized"
     },
     {
-      "id": "term_081",
+      "id": "term_058",
       "term": "ideally located",
       "category": "uncategorized"
     },
     {
-      "id": "term_082",
+      "id": "term_059",
       "term": "cozy fireplace",
-      "category": "interior_features"
+      "category": "amenities"
     },
     {
-      "id": "term_083",
+      "id": "term_060",
       "term": "center island",
       "category": "uncategorized"
     },
     {
-      "id": "term_084",
-      "term": "golf course",
+      "id": "term_061",
+      "term": "features include",
       "category": "uncategorized"
     },
     {
-      "id": "term_085",
+      "id": "term_062",
+      "term": "golf course",
+      "category": "amenities"
+    },
+    {
+      "id": "term_063",
       "term": "water heater",
-      "category": "utilities_systems"
+      "category": "uncategorized"
     },
     {
-      "id": "term_086",
-      "term": "chef kitchen",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_087",
+      "id": "term_064",
       "term": "updated kitchen",
       "category": "interior_features"
     },
     {
-      "id": "term_088",
-      "term": "own private",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_089",
+      "id": "term_065",
       "term": "rental income",
-      "category": "financial_terms"
+      "category": "financing_terms"
     },
     {
-      "id": "term_090",
+      "id": "term_066",
       "term": "suite offers",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_091",
-      "term": "peace mind",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_092",
+      "id": "term_067",
       "term": "private patio",
       "category": "exterior_features"
     },
     {
-      "id": "term_093",
+      "id": "term_068",
       "term": "generational living",
       "category": "layout_space"
     },
     {
-      "id": "term_094",
+      "id": "term_069",
       "term": "sliding glass",
       "category": "uncategorized"
     },
     {
-      "id": "term_095",
+      "id": "term_070",
       "term": "tile flooring",
       "category": "interior_features"
     },
     {
-      "id": "term_096",
-      "term": "residents enjoy",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_097",
+      "id": "term_071",
       "term": "square foot",
       "category": "uncategorized"
     },
     {
-      "id": "term_098",
-      "term": "located just",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_099",
-      "term": "comfort convenience",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_100",
+      "id": "term_072",
       "term": "light filled",
       "category": "uncategorized"
     },
     {
-      "id": "term_101",
+      "id": "term_073",
       "term": "los angeles",
-      "category": "uncategorized"
+      "category": "location_features"
     },
     {
-      "id": "term_102",
+      "id": "term_074",
       "term": "spacious bedrooms",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_103",
+      "id": "term_075",
       "term": "pane windows",
       "category": "uncategorized"
     },
     {
-      "id": "term_104",
+      "id": "term_076",
       "term": "concept layout",
-      "category": "layout_space"
+      "category": "uncategorized"
     },
     {
-      "id": "term_105",
+      "id": "term_077",
       "term": "private retreat",
       "category": "uncategorized"
     },
     {
-      "id": "term_106",
-      "term": "well maintained",
-      "category": "property_condition"
-    },
-    {
-      "id": "term_107",
-      "term": "bedroom full",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_108",
+      "id": "term_078",
       "term": "two story",
       "category": "layout_space"
     },
     {
-      "id": "term_109",
+      "id": "term_079",
+      "term": "residents enjoy",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_080",
       "term": "mountain views",
       "category": "uncategorized"
     },
     {
-      "id": "term_110",
+      "id": "term_081",
       "term": "san diego",
-      "category": "uncategorized"
+      "category": "location_features"
     },
     {
-      "id": "term_111",
+      "id": "term_082",
       "term": "dual pane",
       "category": "uncategorized"
     },
     {
-      "id": "term_112",
+      "id": "term_083",
       "term": "hardwood floors",
       "category": "interior_features"
     },
     {
-      "id": "term_113",
-      "term": "bedrooms full",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_114",
-      "term": "soaring ceilings",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_115",
+      "id": "term_084",
       "term": "seamless indoor",
       "category": "uncategorized"
     },
     {
-      "id": "term_116",
+      "id": "term_085",
       "term": "style amenities",
       "category": "uncategorized"
     },
     {
-      "id": "term_117",
+      "id": "term_086",
       "term": "private backyard",
       "category": "exterior_features"
     },
     {
-      "id": "term_118",
+      "id": "term_087",
+      "term": "soaring ceilings",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_088",
       "term": "fresh interior",
       "category": "property_condition"
     },
     {
-      "id": "term_119",
+      "id": "term_089",
       "term": "two additional",
       "category": "uncategorized"
     },
     {
-      "id": "term_120",
-      "term": "countertops stainless",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_121",
+      "id": "term_090",
       "term": "top rated",
       "category": "uncategorized"
     },
     {
-      "id": "term_122",
+      "id": "term_091",
       "term": "solar panels",
       "category": "uncategorized"
     },
     {
-      "id": "term_123",
+      "id": "term_092",
       "term": "flows seamlessly",
       "category": "uncategorized"
     },
     {
-      "id": "term_124",
-      "term": "seamlessly into",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_125",
+      "id": "term_093",
       "term": "first time",
       "category": "uncategorized"
     },
     {
-      "id": "term_126",
-      "term": "community amenities",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_127",
+      "id": "term_094",
       "term": "upgrades include",
       "category": "uncategorized"
     },
     {
-      "id": "term_128",
+      "id": "term_095",
       "term": "high end",
       "category": "uncategorized"
     },
     {
-      "id": "term_129",
-      "term": "walk pantry",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_130",
+      "id": "term_096",
       "term": "fitness center",
-      "category": "uncategorized"
+      "category": "amenities"
     },
     {
-      "id": "term_131",
-      "term": "perfect entertaining",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_132",
+      "id": "term_097",
       "term": "amenities include",
       "category": "uncategorized"
     },
     {
-      "id": "term_133",
-      "term": "remodeled kitchen",
-      "category": "interior_features"
+      "id": "term_098",
+      "term": "washer dryer",
+      "category": "uncategorized"
     },
     {
-      "id": "term_134",
+      "id": "term_099",
+      "term": "remodeled kitchen",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_100",
       "term": "southern california",
       "category": "uncategorized"
     },
     {
-      "id": "term_135",
+      "id": "term_101",
       "term": "morning coffee",
       "category": "uncategorized"
     },
     {
-      "id": "term_136",
-      "term": "dining areas",
-      "category": "layout_space"
+      "id": "term_102",
+      "term": "community amenities",
+      "category": "location_features"
     },
     {
-      "id": "term_137",
-      "term": "attached garage",
-      "category": "exterior_features"
-    },
-    {
-      "id": "term_138",
+      "id": "term_103",
       "term": "fruit trees",
       "category": "uncategorized"
     },
     {
-      "id": "term_139",
+      "id": "term_104",
       "term": "gourmet kitchen",
       "category": "interior_features"
     },
     {
-      "id": "term_140",
+      "id": "term_105",
       "term": "tennis courts",
-      "category": "uncategorized"
+      "category": "amenities"
     },
     {
-      "id": "term_141",
+      "id": "term_106",
       "term": "first floor",
       "category": "interior_features"
     },
     {
-      "id": "term_142",
-      "term": "custom cabinetry",
-      "category": "interior_features"
+      "id": "term_107",
+      "term": "attached garage",
+      "category": "amenities"
     },
     {
-      "id": "term_143",
+      "id": "term_108",
+      "term": "custom cabinetry",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_109",
       "term": "corner lot",
       "category": "exterior_features"
     },
     {
-      "id": "term_144",
+      "id": "term_110",
       "term": "single level",
       "category": "layout_space"
     },
     {
-      "id": "term_145",
+      "id": "term_111",
       "term": "convenient access",
       "category": "uncategorized"
     },
     {
-      "id": "term_146",
-      "term": "most sought",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_147",
-      "term": "high ceilings",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_148",
+      "id": "term_112",
       "term": "comfortable living",
       "category": "layout_space"
     },
     {
-      "id": "term_149",
-      "term": "breakfast bar",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_150",
-      "term": "filled natural",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_151",
+      "id": "term_113",
       "term": "glass doors",
       "category": "uncategorized"
     },
     {
-      "id": "term_152",
-      "term": "blend comfort",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_153",
-      "term": "features bedrooms",
+      "id": "term_114",
+      "term": "high ceilings",
       "category": "interior_features"
     },
     {
-      "id": "term_154",
+      "id": "term_115",
       "term": "walking distance",
-      "category": "uncategorized"
+      "category": "location_features"
     },
     {
-      "id": "term_155",
+      "id": "term_116",
       "term": "inviting atmosphere",
       "category": "uncategorized"
     },
     {
-      "id": "term_156",
-      "term": "well appointed",
+      "id": "term_117",
+      "term": "breakfast bar",
       "category": "uncategorized"
     },
     {
-      "id": "term_157",
+      "id": "term_118",
       "term": "endless possibilities",
       "category": "uncategorized"
     },
     {
-      "id": "term_158",
-      "term": "additional features",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_159",
+      "id": "term_119",
       "term": "sparkling pool",
-      "category": "exterior_features"
+      "category": "amenities"
     },
     {
-      "id": "term_160",
-      "term": "offers rare",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_161",
+      "id": "term_120",
       "term": "near shopping",
-      "category": "location_neighborhood"
+      "category": "location_features"
     },
     {
-      "id": "term_162",
-      "term": "dining shopping",
-      "category": "location_neighborhood"
-    },
-    {
-      "id": "term_163",
+      "id": "term_121",
       "term": "laminate flooring",
       "category": "interior_features"
     },
     {
-      "id": "term_164",
-      "term": "rated schools",
-      "category": "location_neighborhood"
+      "id": "term_122",
+      "term": "additional features",
+      "category": "uncategorized"
     },
     {
-      "id": "term_165",
+      "id": "term_123",
       "term": "quiet cul",
       "category": "uncategorized"
     },
     {
-      "id": "term_166",
+      "id": "term_124",
       "term": "french doors",
       "category": "uncategorized"
     },
     {
-      "id": "term_167",
+      "id": "term_125",
       "term": "extended family",
       "category": "layout_space"
     },
     {
-      "id": "term_168",
+      "id": "term_126",
       "term": "long term",
       "category": "uncategorized"
     },
     {
-      "id": "term_169",
+      "id": "term_127",
       "term": "coastal living",
       "category": "layout_space"
     },
     {
-      "id": "term_170",
+      "id": "term_128",
       "term": "world class",
       "category": "uncategorized"
     },
     {
-      "id": "term_171",
+      "id": "term_129",
       "term": "formal living",
       "category": "layout_space"
     },
     {
-      "id": "term_172",
-      "term": "relaxing entertaining",
-      "category": "uncategorized"
+      "id": "term_130",
+      "term": "rated schools",
+      "category": "location_features"
     },
     {
-      "id": "term_173",
+      "id": "term_131",
       "term": "plank flooring",
       "category": "interior_features"
     },
     {
-      "id": "term_174",
+      "id": "term_132",
       "term": "solar system",
       "category": "uncategorized"
     },
     {
-      "id": "term_175",
+      "id": "term_133",
       "term": "full bathrooms",
-      "category": "interior_features"
+      "category": "layout_space"
     },
     {
-      "id": "term_176",
+      "id": "term_134",
       "term": "ample space",
       "category": "layout_space"
     },
     {
-      "id": "term_177",
+      "id": "term_135",
       "term": "prime location",
       "category": "uncategorized"
     },
     {
-      "id": "term_178",
+      "id": "term_136",
       "term": "interior paint",
       "category": "uncategorized"
     },
     {
-      "id": "term_179",
-      "term": "warm inviting",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_180",
+      "id": "term_137",
       "term": "award winning",
       "category": "uncategorized"
     },
     {
-      "id": "term_181",
+      "id": "term_138",
       "term": "air conditioning",
-      "category": "utilities_systems"
-    },
-    {
-      "id": "term_182",
-      "term": "walk closets",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_183",
-      "term": "bright open",
-      "category": "layout_space"
-    },
-    {
-      "id": "term_184",
-      "term": "freeway access",
       "category": "uncategorized"
     },
     {
-      "id": "term_185",
+      "id": "term_139",
       "term": "front yard",
       "category": "exterior_features"
     },
     {
-      "id": "term_186",
+      "id": "term_140",
       "term": "large walk",
       "category": "uncategorized"
     },
     {
-      "id": "term_187",
-      "term": "welcome beautifully",
-      "category": "general_marketing"
-    },
-    {
-      "id": "term_188",
+      "id": "term_141",
       "term": "owned solar",
       "category": "uncategorized"
     },
     {
-      "id": "term_189",
-      "term": "bed bath",
-      "category": "interior_features"
-    },
-    {
-      "id": "term_190",
+      "id": "term_142",
       "term": "tucked away",
       "category": "uncategorized"
     },
     {
-      "id": "term_191",
-      "term": "more than",
-      "category": "uncategorized"
-    },
-    {
-      "id": "term_192",
+      "id": "term_143",
       "term": "curb appeal",
       "category": "uncategorized"
     },
     {
-      "id": "term_193",
+      "id": "term_144",
       "term": "major freeways",
       "category": "uncategorized"
     },
     {
-      "id": "term_194",
-      "term": "also features",
-      "category": "uncategorized"
+      "id": "term_145",
+      "term": "freeway access",
+      "category": "location_features"
     },
     {
-      "id": "term_195",
+      "id": "term_146",
       "term": "outdoor space",
       "category": "layout_space"
     },
     {
-      "id": "term_196",
+      "id": "term_147",
       "term": "modern living",
       "category": "property_condition"
     },
     {
+      "id": "term_148",
+      "term": "school district",
+      "category": "location_features"
+    },
+    {
+      "id": "term_149",
+      "term": "energy efficient",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_150",
+      "term": "vinyl plank",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_151",
+      "term": "modern finishes",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_152",
+      "term": "ocean views",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_153",
+      "term": "energy efficiency",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_154",
+      "term": "single family",
+      "category": "property_type"
+    },
+    {
+      "id": "term_155",
+      "term": "appliances including",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_156",
+      "term": "second floor",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_157",
+      "term": "luxury vinyl",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_158",
+      "term": "added privacy",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_159",
+      "term": "countertops stainless",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_160",
+      "term": "suite includes",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_161",
+      "term": "dual sinks",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_162",
+      "term": "outdoor flow",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_163",
+      "term": "dual vanities",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_164",
+      "term": "kitchen featuring",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_165",
+      "term": "closet space",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_166",
+      "term": "large windows",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_167",
+      "term": "new construction",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_168",
+      "term": "fully remodeled",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_169",
+      "term": "functional layout",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_170",
+      "term": "panoramic views",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_171",
+      "term": "swimming pool",
+      "category": "amenities"
+    },
+    {
+      "id": "term_172",
+      "term": "modern upgrades",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_173",
+      "term": "comfort convenience",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_174",
+      "term": "hardwood flooring",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_175",
+      "term": "style living",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_176",
+      "term": "located within",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_177",
+      "term": "multigenerational living",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_178",
+      "term": "centrally located",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_179",
+      "term": "ceiling fans",
+      "category": "interior_features"
+    },
+    {
+      "id": "term_180",
+      "term": "country club",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_181",
+      "term": "fire pit",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_182",
+      "term": "sized bedrooms",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_183",
+      "term": "commuter routes",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_184",
+      "term": "one bedroom",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_185",
+      "term": "exterior paint",
+      "category": "exterior_features"
+    },
+    {
+      "id": "term_186",
+      "term": "custom built",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_187",
+      "term": "upgrades throughout",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_188",
+      "term": "new flooring",
+      "category": "property_condition"
+    },
+    {
+      "id": "term_189",
+      "term": "wet bar",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_190",
+      "term": "three bedrooms",
+      "category": "layout_space"
+    },
+    {
+      "id": "term_191",
+      "term": "bath residence",
+      "category": "property_type"
+    },
+    {
+      "id": "term_192",
+      "term": "ideally situated",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_193",
+      "term": "parking spaces",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_194",
+      "term": "beautifully designed",
+      "category": "uncategorized"
+    },
+    {
+      "id": "term_195",
+      "term": "community pool",
+      "category": "amenities"
+    },
+    {
+      "id": "term_196",
+      "term": "residence features",
+      "category": "property_type"
+    },
+    {
       "id": "term_197",
-      "term": "one most",
+      "term": "tankless water",
       "category": "uncategorized"
     },
     {
       "id": "term_198",
-      "term": "family guests",
-      "category": "layout_space"
+      "term": "close proximity",
+      "category": "uncategorized"
     },
     {
       "id": "term_199",
-      "term": "school district",
-      "category": "location_neighborhood"
+      "term": "additional storage",
+      "category": "amenities"
     },
     {
       "id": "term_200",
-      "term": "energy efficient",
-      "category": "uncategorized"
+      "term": "thoughtfully updated",
+      "category": "property_condition"
     }
   ]
 }
