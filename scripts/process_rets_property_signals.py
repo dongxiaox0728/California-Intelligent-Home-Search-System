@@ -9,6 +9,7 @@ import mysql.connector
 from dotenv import load_dotenv
 
 from scripts.signal_extractor import SignalExtractor
+from scripts.text_cleaning import TextCleaner
 
 
 # Load variables from the .env file in the project root.
@@ -78,6 +79,7 @@ def process_rets_property() -> None:
     signal_extractor = SignalExtractor(
         taxonomy_path="taxonomy/taxonomy_week1.json"
     )
+    text_cleaner = TextCleaner()
 
     processed_count = 0
     failed_count = 0
@@ -88,7 +90,13 @@ def process_rets_property() -> None:
     with OUTPUT_PATH.open("w", encoding="utf-8") as output_file:
         for row in iter_rets_property_rows():
             try:
-                signals = signal_extractor.extract_signals(row)
+                # Clean the raw MLS remarks before Week 3 / Week 6 extraction.
+                cleaned_row = row.copy()
+                cleaned_row["L_Remarks"] = text_cleaner.clean_text(
+                    row.get("L_Remarks", "")
+                )
+
+                signals = signal_extractor.extract_signals(cleaned_row)
 
                 output_file.write(
                     json.dumps(signals, ensure_ascii=False) + "\n"
