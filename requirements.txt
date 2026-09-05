@@ -4,3 +4,8 @@ nltk
 spacy
 pytest
 jupyter
+fastapi
+uvicorn
+redis
+slowapi
+pydantic

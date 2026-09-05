@@ -1,5 +1,8 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 from scripts.query_parser import QueryParser
 from scripts.entity_extractor import EntityExtractor
@@ -9,10 +12,15 @@ from scripts.compliance_checker import ComplianceChecker
 from scripts.query_intent_classifier import predict_intent
 from scripts.signal_extractor import SignalExtractor
 
+limiter = Limiter(key_func=get_remote_address)
+
 app = FastAPI(
     title="Real Estate NLP API",
     version="1.0.0"
 )
+
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 parser = QueryParser()
 entity_extractor = EntityExtractor(
@@ -50,8 +58,14 @@ class SignalRequest(BaseModel):
     L_ListingID: str | None = None
     L_Remarks: str
 
+class SearchResponse(BaseModel):
+    query: str
+    results: list
+    count: int
+
 @app.get("/health")
-async def health_check():
+@limiter.limit("10/second")
+async def health_check(request: Request):
     return {
         "status": "ok",
         "message": "Real Estate NLP is running"
@@ -60,11 +74,12 @@ async def health_check():
 
 
 @app.post("/parse-query")
-async def parse_query(request: ParseQueryRequest):
+@limiter.limit("10/second")
+async def parse_query(request: Request, body: ParseQueryRequest):
     try:
-        filters = parser.parse(request.query)
+        filters = parser.parse(body.query)
         return {
-            "query": request.query,
+            "query": body.query,
             "filters": filters
         }
     except ValueError as e:
@@ -74,12 +89,13 @@ async def parse_query(request: ParseQueryRequest):
         )
 
 @app.post("/extract-entities")
-async def extract_entities(request: ExtractEntitiesRequest):
+@limiter.limit("10/second")
+async def extract_entities(request: Request, body: ExtractEntitiesRequest):
     try:
-        entities = entity_extractor.extract_all(request.text)
+        entities = entity_extractor.extract_all(body.text)
 
         return {
-            "text": request.text,
+            "text": body.text,
             "entities": entities
         }
 
@@ -89,19 +105,49 @@ async def extract_entities(request: ExtractEntitiesRequest):
             detail=str(e)
         )
 
+import json
+import hashlib
+from api.redis_client import redis_client
+
+
 @app.post("/search")
-async def search_listings(request: SearchRequest):
+@limiter.limit("10/second")
+async def search_listings(request: Request, body: SearchRequest):
     try:
+        cache_input = f"{body.query}:{body.top_k}"
+
+        cache_key = "search:" + hashlib.sha256(
+            cache_input.encode()
+        ).hexdigest()
+
+        cached = redis_client.get(cache_key)
+
+        if cached:
+            print("CACHE HIT")
+            return json.loads(cached)
+
+        print("CACHE MISS")
+
+        # Your original semantic search only
         results = semantic_searcher.search(
-            query=request.query,
-            top_k=request.top_k
+            query=body.query,
+            top_k=body.top_k
         )
 
-        return {
-            "query": request.query,
+        response = {
+            "query": body.query,
             "count": len(results),
             "results": results
         }
+
+        # Store for 5 minutes
+        redis_client.setex(
+            cache_key,
+            300,
+            json.dumps(response)
+        )
+
+        return response
 
     except ValueError as e:
         raise HTTPException(
@@ -116,11 +162,12 @@ async def search_listings(request: SearchRequest):
         )
 
 @app.post("/summarize")
-async def summarize_listing(request: SummarizeRequest):
+@limiter.limit("10/second")
+async def summarize_listing(request: Request, body: SummarizeRequest):
     try:
         summary = listing_summarizer.extractive_summary(
-            remarks=request.remarks,
-            num_sentences=request.num_sentences
+            remarks=body.remarks,
+            num_sentences=body.num_sentences
         )
 
         return {
@@ -134,9 +181,10 @@ async def summarize_listing(request: SummarizeRequest):
         )
 
 @app.post("/check-compliance")
-async def check_compliance(request: ComplianceRequest):
+@limiter.limit("10/second")
+async def check_compliance(request: Request, body: ComplianceRequest):
     try:
-        result = compliance_checker.check_listing(request.text)
+        result = compliance_checker.check_listing(body.text)
 
         return result
 
@@ -147,12 +195,13 @@ async def check_compliance(request: ComplianceRequest):
         )
 
 @app.post("/classify-intent")
-async def classify_intent(request: IntentRequest):
+@limiter.limit("10/second")
+async def classify_intent(request: Request, body: IntentRequest):
     try:
-        result = predict_intent(request.query)
+        result = predict_intent(body.query)
 
         return {
-            "query": request.query,
+            "query": body.query,
             "intent": result["intent"],
             "confidence": result["confidence"]
         }
@@ -164,11 +213,12 @@ async def classify_intent(request: IntentRequest):
         )
 
 @app.post("/extract-signals")
-async def extract_signals(request: SignalRequest):
+@limiter.limit("10/second")
+async def extract_signals(request: Request, body: SignalRequest):
     try:
         listing_record = {
-            "L_ListingID": request.L_ListingID,
-            "L_Remarks": request.L_Remarks
+            "L_ListingID": body.L_ListingID,
+            "L_Remarks": body.L_Remarks
         }
 
         result = signal_extractor.extract_signals(listing_record)
