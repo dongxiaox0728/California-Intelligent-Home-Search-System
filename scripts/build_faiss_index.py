@@ -6,7 +6,7 @@ import pandas as pd
 
 
 EMBEDDINGS_PATH = Path("data/models/listing_embeddings.npy")
-DATA_PATH = Path("data/processed/listing_sample_cleaned.csv")
+DATA_PATH = Path("data/processed/listing_full_cleaned.csv")
 
 INDEX_OUTPUT_PATH = Path("data/models/listing_semantic.index")
 METADATA_OUTPUT_PATH = Path("data/models/listing_metadata.csv")

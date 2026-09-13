@@ -9,8 +9,21 @@ import pandas as pd
 from rank_bm25 import BM25Okapi
 
 
-DATA_PATH = Path("data/processed/listing_sample_cleaned.csv")
+DATA_PATH = Path("data/processed/listing_full_cleaned.csv")
 TEXT_COLUMN = "cleaned_remarks"
+
+
+def clean_value(value: Any) -> Any:
+    """
+    Convert pandas/numpy scalar values into JSON-safe Python values.
+    """
+    if pd.isna(value):
+        return None
+
+    if isinstance(value, np.generic):
+        return value.item()
+
+    return value
 
 
 class BM25Searcher:
@@ -75,6 +88,7 @@ class BM25Searcher:
         """
         Return listings with the highest BM25 keyword scores.
         """
+
         if self.metadata is None or self.bm25 is None:
             raise RuntimeError(
                 "BM25Searcher has not been loaded. "
@@ -97,9 +111,15 @@ class BM25Searcher:
         results: list[dict[str, Any]] = []
 
         for rank, position in enumerate(top_positions, start=1):
-            listing = self.metadata.iloc[position].to_dict()
+            row = self.metadata.iloc[position]
 
-            listing["rank"] = rank
+            # Convert pandas / NumPy values into JSON-safe Python values.
+            listing = {
+                key: clean_value(value)
+                for key, value in row.items()
+            }
+
+            listing["rank"] = int(rank)
             listing["bm25_score"] = float(scores[position])
             listing["dataset_position"] = int(position)
 

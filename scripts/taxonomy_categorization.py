@@ -310,7 +310,7 @@ def main():
         "metadata": {
             "project": "real_estate_nlp",
             "description": (
-                "Real-estate terminology taxonomy generated from the top "
+                "Real-estate terminology taxonomy generated from the top"
                 "listing-remark bigrams and categorized for downstream NLP tasks."
             ),
             "num_terms": len(terms),

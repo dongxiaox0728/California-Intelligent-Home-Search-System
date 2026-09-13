@@ -111,8 +111,8 @@ def profile_column(df, column_name):
 
 
 def main():
-    input_path = Path("data/processed/listing_sample_cleaned.csv")
-    output_path = Path("data/processed/data_profiling_report_after_cleaning.json")
+    input_path = Path("data/processed/listing_full_cleaned.csv")
+    output_path = Path("data/processed/data_profiling_report_after_cleaning_full.json")
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     df = pd.read_csv(input_path)

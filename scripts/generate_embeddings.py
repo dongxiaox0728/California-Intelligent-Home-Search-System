@@ -5,7 +5,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 
 
-DATA_PATH = Path("data/processed/listing_sample_cleaned.csv")
+DATA_PATH = Path("data/processed/listing_full_cleaned.csv")
 OUTPUT_PATH = Path("data/models/listing_embeddings.npy")
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"

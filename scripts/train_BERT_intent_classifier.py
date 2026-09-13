@@ -19,7 +19,7 @@ from transformers import (
 
 # Configuration
 
-DATA_PATH = "data/processed/week7_real_estate_search_queries_210_labeled.csv"
+DATA_PATH = "data/processed/week7_real_estate_search_queries_500_labeled.csv"
 MODEL_NAME = "distilbert-base-uncased"
 
 CHECKPOINT_DIR = "data/models/intent_classifier_checkpoints"

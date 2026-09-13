@@ -169,8 +169,8 @@ class TextCleaner:
 
 
 def clean_dataset(
-    input_path="data/processed/listing_sample.csv",
-    output_path="data/processed/listing_sample_cleaned.csv",
+    input_path="data/processed/listing_full.csv",
+    output_path="data/processed/listing_full_cleaned.csv",
     text_column="remarks",
 ):
     input_path = Path(input_path)

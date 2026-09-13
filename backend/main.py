@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
@@ -11,12 +12,21 @@ from scripts.extractive_listing_summarizer import ListingSummarizer
 from scripts.compliance_checker import ComplianceChecker
 from scripts.query_intent_classifier import predict_intent
 from scripts.signal_extractor import SignalExtractor
+from scripts.bm25_search import BM25Searcher
 
 limiter = Limiter(key_func=get_remote_address)
 
 app = FastAPI(
     title="Real Estate NLP API",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.state.limiter = limiter
@@ -28,6 +38,9 @@ entity_extractor = EntityExtractor(
 )
 semantic_searcher = SemanticSearcher()
 semantic_searcher.load()
+
+bm25_searcher = BM25Searcher()
+bm25_searcher.load()
 listing_summarizer = ListingSummarizer()
 compliance_checker = ComplianceChecker()
 signal_extractor = SignalExtractor(
@@ -160,6 +173,56 @@ async def search_listings(request: Request, body: SearchRequest):
             status_code=500,
             detail=str(e)
         )
+
+@app.post("/bm25-search")
+@limiter.limit("10/second")
+async def bm25_search_listings(request: Request, body: SearchRequest):
+    try:
+        cache_input = f"{body.query}:{body.top_k}"
+
+        cache_key = "bm25_search:" + hashlib.sha256(
+            cache_input.encode()
+        ).hexdigest()
+
+        cached = redis_client.get(cache_key)
+
+        if cached:
+            print("BM25 CACHE HIT")
+            return json.loads(cached)
+
+        print("BM25 CACHE MISS")
+
+        results = bm25_searcher.search(
+            query=body.query,
+            top_k=body.top_k
+        )
+
+        response = {
+            "query": body.query,
+            "count": len(results),
+            "results": results
+        }
+
+        redis_client.setex(
+            cache_key,
+            300,
+            json.dumps(response)
+        )
+
+        return response
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+
+    except RuntimeError as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
+
 
 @app.post("/summarize")
 @limiter.limit("10/second")
