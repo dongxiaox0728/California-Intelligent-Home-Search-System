@@ -28,5 +28,5 @@ Thumbs.db
 frontend/node_modules/
 
 #Ignore the benchmarks output files
-/benchmarks/retrieval_v1/*
-!/benchmarks/retrieval_v1/README.md
+/benchmarks/retrieval/*
+!/benchmarks/retrieval/README.md
