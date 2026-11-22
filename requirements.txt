@@ -4,8 +4,14 @@ nltk
 spacy
 pytest
 jupyter
-fastapi
+fastapi>=0.100
 uvicorn
 redis
 slowapi
-pydantic
+pydantic>=2
+python-dotenv
+openai
+sentence-transformers
+faiss-cpu
+rank-bm25
+httpx

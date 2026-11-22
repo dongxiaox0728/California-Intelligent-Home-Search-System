@@ -25,6 +25,7 @@ services:
       - "8000:8000"
     environment:
       REDIS_HOST: redis
+      MYSQL_HOST: mysql
     depends_on:
       - redis
       - mysql

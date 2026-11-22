@@ -13,21 +13,21 @@ class CompliancePattern:
     severity: str
     message: str
 
+"""
+  Rule-based Fair Housing advertising compliance checker.
 
-class ComplianceChecker:
-    """
-    Rule-based Fair Housing advertising compliance checker.
-
-    Screening design:
+  Screening design:
     - "error": explicit discriminatory preference/exclusion language
     - "warning": context-sensitive language that should be reviewed
     - "info": reserved for future informational checks
 
-    Notes:
-    - This is a screening/educational component, not legal advice.
-    - HUD Part 109 treats listed words/phrases as contextual indicators
+  Notes:
+    - This is a screening component, not legal advice.
+    - HUD Part 109 treats listed words as contextual indicators
       of possible discriminatory advertising, not a complete automatic blacklist.
-    """
+"""
+
+class ComplianceChecker:
 
     SEVERITY_ORDER = {"info": 1, "warning": 2, "error": 3}
 

@@ -27,12 +27,7 @@ KNOWN_LOCATION_PHRASES = {
 
 
 def load_city_names() -> set[str]:
-    """
-    Load city names from the listing sample when possible.
 
-    This is better than relying only on hard-coded location keywords because
-    taxonomy bigrams can be literal place names such as "los angeles".
-    """
     city_names = {normalize_term(name) for name in KNOWN_LOCATION_PHRASES}
 
     path = Path(CITY_SOURCE_PATH)
@@ -60,10 +55,6 @@ def load_city_names() -> set[str]:
     return city_names
 
 
-# Eight categories chosen to be useful in later weeks:
-# - Week 3: amenity / feature detection
-# - Week 4: query parsing and filtering
-# - Week 6: listing signal extraction
 CATEGORY_KEYWORDS = {
     "property_type": {
         "phrases": {
@@ -188,9 +179,6 @@ CATEGORY_KEYWORDS = {
     },
 }
 
-
-# Some words can plausibly belong to more than one category.
-# This priority is used only when categories receive the same score.
 CATEGORY_PRIORITY = [
     "property_type",
     "amenities",
@@ -204,7 +192,6 @@ CATEGORY_PRIORITY = [
 
 
 def normalize_term(term: str) -> str:
-    """Normalize a taxonomy term for matching."""
     term = str(term).lower().strip()
     term = term.replace("-", " ")
     term = re.sub(r"\s+", " ", term)
@@ -212,16 +199,7 @@ def normalize_term(term: str) -> str:
 
 
 def assign_category(term: str, city_names: set[str]) -> str:
-    """
-    Assign a bigram to the best matching category.
 
-    Method:
-    1. Normalize the term.
-    2. Give strong weight to explicit phrase matches.
-    3. Give one point for each keyword token that appears.
-    4. Choose the category with the highest score.
-    5. If nothing matches, return 'uncategorized'.
-    """
     normalized = normalize_term(term)
     term_tokens = set(normalized.split())
 

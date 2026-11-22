@@ -1,0 +1,43 @@
+{
+  "queries_completed": 100,
+  "query_count": 100,
+  "run_depth": 100,
+  "pool_depth_per_system": 10,
+  "status_counts": {
+    "ok": 200
+  },
+  "ranked_result_rows": 19664,
+  "unique_query_listing_pairs": 1973,
+  "new_system_mode_mismatch_query_ids": [
+    "Q002",
+    "Q003",
+    "Q005",
+    "Q007",
+    "Q008",
+    "Q011",
+    "Q012",
+    "Q014",
+    "Q015",
+    "Q017",
+    "Q018",
+    "Q019",
+    "Q020",
+    "Q022",
+    "Q024",
+    "Q025",
+    "Q037",
+    "Q045",
+    "Q048",
+    "Q052",
+    "Q055",
+    "Q058",
+    "Q061",
+    "Q062",
+    "Q063",
+    "Q065",
+    "Q066",
+    "Q071",
+    "Q087"
+  ],
+  "note": "Pools from queries with a failed system are incomplete; consult diagnostics. No relevance grades have been assigned."
+}

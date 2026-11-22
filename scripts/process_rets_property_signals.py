@@ -24,9 +24,9 @@ DB_CONFIG = {
     "database": os.getenv("MYSQL_DATABASE"),
 }
 
-
+##Fail early if a required database environment variable is missing.
 def validate_db_config() -> None:
-    """Fail early if a required database environment variable is missing."""
+
     missing = [
         key
         for key, value in DB_CONFIG.items()
@@ -41,9 +41,7 @@ def validate_db_config() -> None:
 
 
 def iter_rets_property_rows() -> Iterator[dict[str, Any]]:
-    """
-    Stream listing records directly from the rets_property table.
-    """
+
     validate_db_config()
 
     connection = mysql.connector.connect(**DB_CONFIG)
@@ -68,12 +66,9 @@ def iter_rets_property_rows() -> Iterator[dict[str, Any]]:
         cursor.close()
         connection.close()
 
-
+## Process the rets_property table directly and save Week 6 schema-aligned signals as JSONL.
 def process_rets_property() -> None:
-    """
-    Process the rets_property table directly and save Week 6
-    schema-aligned signals as JSONL.
-    """
+
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     signal_extractor = SignalExtractor(

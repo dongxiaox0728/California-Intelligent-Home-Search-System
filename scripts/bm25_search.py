@@ -14,9 +14,7 @@ TEXT_COLUMN = "cleaned_remarks"
 
 
 def clean_value(value: Any) -> Any:
-    """
-    Convert pandas/numpy scalar values into JSON-safe Python values.
-    """
+
     if pd.isna(value):
         return None
 
@@ -38,17 +36,15 @@ class BM25Searcher:
         self.metadata: pd.DataFrame | None = None
         self.bm25: BM25Okapi | None = None
 
+    ##Convert text into lowercase alphanumeric tokens.
     @staticmethod
     def tokenize(text: str) -> list[str]:
-        """
-        Convert text into lowercase alphanumeric tokens.
-        """
+        
         return re.findall(r"\b[a-z0-9]+\b", text.lower())
 
+    
+    ##Load the listing dataset and build the BM25 corpus. 
     def load(self) -> None:
-        """
-        Load the listing dataset and build the BM25 corpus.
-        """
         if not self.data_path.exists():
             raise FileNotFoundError(
                 f"Dataset not found at: {self.data_path}"
@@ -80,14 +76,12 @@ class BM25Searcher:
             f"{len(self.metadata):,} listings."
         )
 
+    ##Return listings with the highest BM25 keyword scores.
     def search(
         self,
         query: str,
         top_k: int = 5,
     ) -> list[dict[str, Any]]:
-        """
-        Return listings with the highest BM25 keyword scores.
-        """
 
         if self.metadata is None or self.bm25 is None:
             raise RuntimeError(

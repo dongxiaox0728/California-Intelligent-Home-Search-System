@@ -9,22 +9,7 @@ from scripts.entity_extractor import EntityExtractor
 
 
 class SignalExtractor:
-    """
-    Week 6 SignalExtractor following the handbook structure exactly.
 
-    Output:
-    {
-        "listing_id": ...,
-        "entities": ...,
-        "amenities": ...,
-        "condition_keywords": ...,
-        "financing_terms": ...,
-        "location_features": ...
-    }
-
-    Week 3 EntityExtractor is reused for structured entities.
-    Week 1 taxonomy is used specifically for amenity matching.
-    """
 
     def __init__(
         self,
@@ -51,9 +36,9 @@ class SignalExtractor:
             raise ValueError("taxonomy JSON must contain an object")
 
         return data
-
+    ##Get only terms categorized as amenities in the Week 1 taxonomy.
     def _load_amenity_terms(self) -> list[str]:
-        """Get only terms categorized as amenities in the Week 1 taxonomy."""
+
         amenities: list[str] = []
 
         for item in self.taxonomy.get("terms", []):
@@ -72,9 +57,7 @@ class SignalExtractor:
         return re.search(pattern, text, re.IGNORECASE) is not None
 
     def _match_amenities(self, remarks: str) -> list[str]:
-        """
-        Match amenity terms from the Week 1 taxonomy.
-        """
+
         if not isinstance(remarks, str) or not remarks.strip():
             return []
 
@@ -87,12 +70,7 @@ class SignalExtractor:
         return found
 
     def _extract_condition(self, remarks: str) -> list[str]:
-        """
-        Detect property-condition signals.
 
-        These are Week 6 signal rules, rather than returning the entire
-        Week 1 property_condition taxonomy category.
-        """
         condition_patterns = {
             "updated": [
                 r"\bupdated\b",
@@ -132,9 +110,7 @@ class SignalExtractor:
         return found
 
     def _extract_financing(self, remarks: str) -> list[str]:
-        """
-        Detect financing-related listing signals.
-        """
+
         financing_patterns = {
             "seller financing": [
                 r"\bseller financing\b",
@@ -169,14 +145,7 @@ class SignalExtractor:
         return found
 
     def _extract_location(self, remarks: str) -> list[str]:
-        """
-        Detect descriptive location features from remarks.
 
-        This is for features such as proximity to parks, schools, downtown,
-        transit, waterfront, etc. The listing's structured city field is not
-        copied into this list because the handbook calls this
-        'location_features'.
-        """
         location_patterns = {
             "near downtown": [
                 r"\bnear downtown\b",
@@ -228,20 +197,15 @@ class SignalExtractor:
         return found
 
     def extract_signals(self, listing_record: dict[str, Any]) -> dict[str, Any]:
-        """
-        Extract Week 6 signals from one listing record.
-        """
+
         if not isinstance(listing_record, dict):
             raise TypeError("listing_record must be a dictionary")
 
         remarks = listing_record.get("L_Remarks", "") or ""
         remarks = str(remarks)
 
-        # Get the Week 3 extraction result.
         week3_entities = self.extractor.extract_all(remarks)
 
-        # Week 6 schema keeps only the structured numeric entities here.
-        # Amenities are returned separately at the top level.
         entities = {
             "bedrooms": week3_entities.get("bedrooms"),
             "bathrooms": week3_entities.get("bathrooms"),
@@ -249,10 +213,8 @@ class SignalExtractor:
             "sqft": week3_entities.get("sqft"),
         }
 
-        # Get amenities from the Week 1 taxonomy.
         amenities = self._match_amenities(remarks)
 
-        # Return the Week 6 JSON-schema-compatible structure directly.
         return {
             "listing_id": listing_record.get("L_ListingID"),
             "entities": entities,

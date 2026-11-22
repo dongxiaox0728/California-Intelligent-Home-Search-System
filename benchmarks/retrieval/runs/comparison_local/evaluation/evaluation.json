@@ -1,0 +1,135 @@
+{
+  "k": 10,
+  "relevant_min": 2,
+  "query_count": 100,
+  "systems": [
+    "baseline",
+    "new"
+  ],
+  "input": "/Users/jaye86/IDX-nlp/benchmarks/retrieval_v1/runs/comparison_local/top10_with_grades.csv",
+  "judgments": "/Users/jaye86/IDX-nlp/benchmarks/retrieval_v1/runs/comparison_local/judging_pool_graded.csv",
+  "top_k_result_rows": 2000,
+  "review_flagged_result_rows": 586,
+  "not_human_reviewed_result_rows": 2000,
+  "definitions": {
+    "gain": "2**grade - 1",
+    "discount": "log2(rank + 1)",
+    "ideal": "Shared ideal from each query's full judged pool, limited to k",
+    "precision": "Count of grade >= relevant_min divided by k; missing slots are non-relevant",
+    "violations": "Hard-constraint failures divided by actual returned results within k",
+    "averaging": "Equal weight per query (macro average)",
+    "zero_ideal": "nDCG is undefined and excluded when the pool has no positive grades; other metrics retained"
+  },
+  "summary": [
+    {
+      "scope": "overall",
+      "system": "baseline",
+      "query_count": 100,
+      "ndcg_query_count": 100,
+      "mean_ndcg_at_k": 0.3756216535111117,
+      "mean_precision_at_k": 0.33,
+      "mean_violation_rate_at_k": 0.447,
+      "returned_count": 1000,
+      "violation_count": 447
+    },
+    {
+      "scope": "overall",
+      "system": "new",
+      "query_count": 100,
+      "ndcg_query_count": 100,
+      "mean_ndcg_at_k": 0.7878204321827058,
+      "mean_precision_at_k": 0.744,
+      "mean_violation_rate_at_k": 0.12,
+      "returned_count": 1000,
+      "violation_count": 120
+    },
+    {
+      "scope": "hard_only",
+      "system": "baseline",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.36724877175360177,
+      "mean_precision_at_k": 0.348,
+      "mean_violation_rate_at_k": 0.652,
+      "returned_count": 250,
+      "violation_count": 163
+    },
+    {
+      "scope": "hard_only",
+      "system": "new",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.8589636203753054,
+      "mean_precision_at_k": 0.828,
+      "mean_violation_rate_at_k": 0.17200000000000001,
+      "returned_count": 250,
+      "violation_count": 43
+    },
+    {
+      "scope": "hard_semantic",
+      "system": "baseline",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.3980864597373055,
+      "mean_precision_at_k": 0.3,
+      "mean_violation_rate_at_k": 0.48,
+      "returned_count": 250,
+      "violation_count": 120
+    },
+    {
+      "scope": "hard_semantic",
+      "system": "new",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.6599154913826144,
+      "mean_precision_at_k": 0.552,
+      "mean_violation_rate_at_k": 0.144,
+      "returned_count": 250,
+      "violation_count": 36
+    },
+    {
+      "scope": "hard_structured",
+      "system": "baseline",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.39109020081362045,
+      "mean_precision_at_k": 0.424,
+      "mean_violation_rate_at_k": 0.328,
+      "returned_count": 250,
+      "violation_count": 82
+    },
+    {
+      "scope": "hard_structured",
+      "system": "new",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.9052554631784645,
+      "mean_precision_at_k": 0.916,
+      "mean_violation_rate_at_k": 0.084,
+      "returned_count": 250,
+      "violation_count": 21
+    },
+    {
+      "scope": "hard_structured_semantic",
+      "system": "baseline",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.34606118173991907,
+      "mean_precision_at_k": 0.248,
+      "mean_violation_rate_at_k": 0.328,
+      "returned_count": 250,
+      "violation_count": 82
+    },
+    {
+      "scope": "hard_structured_semantic",
+      "system": "new",
+      "query_count": 25,
+      "ndcg_query_count": 25,
+      "mean_ndcg_at_k": 0.7271471537944391,
+      "mean_precision_at_k": 0.68,
+      "mean_violation_rate_at_k": 0.08,
+      "returned_count": 250,
+      "violation_count": 20
+    }
+  ]
+}

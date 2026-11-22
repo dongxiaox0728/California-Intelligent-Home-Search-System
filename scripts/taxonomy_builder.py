@@ -13,7 +13,7 @@ OUTPUT_FILE = "data/processed/top_bigrams.csv"
 
 
 def download_nltk_resources():
-    """Download NLTK resources needed for tokenization and stopwords."""
+
     resources = [
         ("tokenizers/punkt", "punkt"),
         ("corpora/stopwords", "stopwords"),
@@ -27,7 +27,7 @@ def download_nltk_resources():
 
 
 def clean_text(text):
-    """Lowercase text and remove punctuation/special characters."""
+    
     text = str(text).lower()
     text = re.sub(r"[^a-z0-9\s]", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
@@ -35,10 +35,7 @@ def clean_text(text):
 
 
 def get_stop_words():
-    """
-    Use NLTK's standard English stopword list plus extra words that are
-    common in listing remarks but usually not useful taxonomy signals.
-    """
+
     stop_words = set(stopwords.words("english"))
 
     custom_stop_words = {
@@ -68,16 +65,7 @@ def get_stop_words():
 
 
 def extract_bigrams(text_series, top_n=200):
-    """
-    Extract the top bigrams from listing remarks.
 
-    Each remark is processed independently so a bigram can never be formed
-    across the boundary between two different listings.
-
-    Bigrams are formed from the original token sequence. A bigram is kept only
-    when BOTH words are meaningful (not stopwords, not short tokens, not pure
-    numbers). This preserves true word adjacency.
-    """
     stop_words = get_stop_words()
     freq = Counter()
 

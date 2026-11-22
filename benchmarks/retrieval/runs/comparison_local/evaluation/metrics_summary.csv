@@ -1,0 +1,11 @@
+scope,system,query_count,ndcg_query_count,mean_ndcg_at_k,mean_precision_at_k,mean_violation_rate_at_k,returned_count,violation_count
+overall,baseline,100,100,0.3756216535111117,0.33,0.447,1000,447
+overall,new,100,100,0.7878204321827058,0.744,0.12,1000,120
+hard_only,baseline,25,25,0.36724877175360177,0.348,0.652,250,163
+hard_only,new,25,25,0.8589636203753054,0.828,0.17200000000000001,250,43
+hard_semantic,baseline,25,25,0.3980864597373055,0.3,0.48,250,120
+hard_semantic,new,25,25,0.6599154913826144,0.552,0.144,250,36
+hard_structured,baseline,25,25,0.39109020081362045,0.424,0.328,250,82
+hard_structured,new,25,25,0.9052554631784645,0.916,0.084,250,21
+hard_structured_semantic,baseline,25,25,0.34606118173991907,0.248,0.328,250,82
+hard_structured_semantic,new,25,25,0.7271471537944391,0.68,0.08,250,20
