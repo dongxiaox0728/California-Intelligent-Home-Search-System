@@ -2,7 +2,7 @@
 
 [Key Features](#key-features) | [Architecture](#architecture-overview) | [What Makes Smart Search Different](#what-makes-smart-search-different) | [Retrieval Benchmark](benchmarks/retrieval/README.md) | [API](#fastapi-endpoints) | [Live Application](#live-application) | [Repo Architecture](#repo-architecture) | [Limitations and Next Steps](#limitations-and-next-steps)
 
-California Intelligent Home Search System is a comprehensive real estate search platform designed to help users discover relevant property listings through both hybrid-retrieval (smart) and BM25 keyword-based search.
+California Intelligent Home Search System is a comprehensive real estate search platform designed to help users discover relevant property listings through both hybrid-retrieval (smart) and BM25 keyword-based search. Here is the link to the web application: [CA Home Search](https://ca-home-search.vercel.app/)
 
 The system combines multiple natural language processing components, including semantic search, BM25 keyword search, query intent identification, query parsing, compliance checks, listing summarization, and property signal extraction. Together, these components help the system better understand user queries, retrieve relevant listings, and present visually intuitive property information in a more structured way.
 
