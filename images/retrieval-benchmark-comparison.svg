@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="655" viewBox="0 0 1440 655" role="img" aria-labelledby="title desc">
+  <title id="title">Retrieval benchmark comparison at rank 10</title>
+  <desc id="desc">Paired horizontal bars compare the semantic baseline and hybrid retrieval on 100 manually authored queries. Hybrid scores higher on nDCG and precision and has fewer hard-constraint violations across all four query categories. The judgments are provisional.</desc>
+  <style>
+    text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: #172944; }
+    .muted { fill: #465b72; }
+    .value { font-variant-numeric: tabular-nums; }
+  </style>
+  <rect width="1440" height="655" rx="20" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="1439" height="654" rx="20" fill="none" stroke="#d9e2e9"/>
+  <rect x="26" y="203" width="1388" height="74" rx="12" fill="#eaf5f1"/>
+
+  <text x="38" y="55" font-size="34" font-weight="700" class="" text-anchor="start">Retrieval benchmark comparison</text>
+  <text x="38" y="87" font-size="18" font-weight="400" class="muted" text-anchor="start">Top 10 results · 100 manually authored queries</text>
+  <rect x="38" y="110" width="22" height="13" rx="4" fill="#667892"/>
+  <text x="68" y="122" font-size="16" font-weight="650" class="" text-anchor="start">Semantic baseline</text>
+  <rect x="248" y="110" width="22" height="13" rx="4" fill="#08735d"/>
+  <text x="278" y="122" font-size="16" font-weight="650" class="" text-anchor="start">Hybrid retrieval</text>
+  <text x="264" y="163" font-size="21" font-weight="700" class="" text-anchor="start">nDCG@10</text>
+  <text x="264" y="186" font-size="15" font-weight="400" class="muted" text-anchor="start">Higher is better</text>
+  <line x1="264.0" y1="205" x2="264.0" y2="601" stroke="#8ca0b1"/>
+  <text x="264.0" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">0</text>
+  <line x1="332.75" y1="205" x2="332.75" y2="601" stroke="#e0e7ed"/>
+  <text x="332.75" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">0.25</text>
+  <line x1="401.5" y1="205" x2="401.5" y2="601" stroke="#e0e7ed"/>
+  <text x="401.5" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">0.5</text>
+  <line x1="470.25" y1="205" x2="470.25" y2="601" stroke="#e0e7ed"/>
+  <text x="470.25" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">0.75</text>
+  <line x1="539.0" y1="205" x2="539.0" y2="601" stroke="#e0e7ed"/>
+  <text x="539.0" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">1</text>
+  <rect x="264" y="219" width="103.2960" height="15" rx="4" fill="#667892" data-scope="overall" data-system="baseline" data-metric="mean_ndcg_at_k" data-value="0.3756216535111117"/>
+  <text x="375.30" y="232" font-size="15" font-weight="650" class="value" text-anchor="start">0.376</text>
+  <rect x="264" y="242" width="216.6506" height="15" rx="4" fill="#08735d" data-scope="overall" data-system="new" data-metric="mean_ndcg_at_k" data-value="0.7878204321827058"/>
+  <text x="488.65" y="255" font-size="15" font-weight="650" class="value" text-anchor="start">0.788</text>
+  <rect x="264" y="300" width="100.9934" height="15" rx="4" fill="#667892" data-scope="hard_only" data-system="baseline" data-metric="mean_ndcg_at_k" data-value="0.36724877175360177"/>
+  <text x="372.99" y="313" font-size="15" font-weight="500" class="value" text-anchor="start">0.367</text>
+  <rect x="264" y="323" width="236.2150" height="15" rx="4" fill="#08735d" data-scope="hard_only" data-system="new" data-metric="mean_ndcg_at_k" data-value="0.8589636203753054"/>
+  <text x="508.21" y="336" font-size="15" font-weight="500" class="value" text-anchor="start">0.859</text>
+  <rect x="264" y="381" width="107.5498" height="15" rx="4" fill="#667892" data-scope="hard_structured" data-system="baseline" data-metric="mean_ndcg_at_k" data-value="0.39109020081362045"/>
+  <text x="379.55" y="394" font-size="15" font-weight="500" class="value" text-anchor="start">0.391</text>
+  <rect x="264" y="404" width="248.9453" height="15" rx="4" fill="#08735d" data-scope="hard_structured" data-system="new" data-metric="mean_ndcg_at_k" data-value="0.9052554631784645"/>
+  <text x="520.95" y="417" font-size="15" font-weight="500" class="value" text-anchor="start">0.905</text>
+  <rect x="264" y="462" width="109.4738" height="15" rx="4" fill="#667892" data-scope="hard_semantic" data-system="baseline" data-metric="mean_ndcg_at_k" data-value="0.3980864597373055"/>
+  <text x="381.47" y="475" font-size="15" font-weight="500" class="value" text-anchor="start">0.398</text>
+  <rect x="264" y="485" width="181.4768" height="15" rx="4" fill="#08735d" data-scope="hard_semantic" data-system="new" data-metric="mean_ndcg_at_k" data-value="0.6599154913826144"/>
+  <text x="453.48" y="498" font-size="15" font-weight="500" class="value" text-anchor="start">0.660</text>
+  <rect x="264" y="543" width="95.1668" height="15" rx="4" fill="#667892" data-scope="hard_structured_semantic" data-system="baseline" data-metric="mean_ndcg_at_k" data-value="0.34606118173991907"/>
+  <text x="367.17" y="556" font-size="15" font-weight="500" class="value" text-anchor="start">0.346</text>
+  <rect x="264" y="566" width="199.9655" height="15" rx="4" fill="#08735d" data-scope="hard_structured_semantic" data-system="new" data-metric="mean_ndcg_at_k" data-value="0.7271471537944391"/>
+  <text x="471.97" y="579" font-size="15" font-weight="500" class="value" text-anchor="start">0.727</text>
+  <text x="648" y="163" font-size="21" font-weight="700" class="" text-anchor="start">Precision@10</text>
+  <text x="648" y="186" font-size="15" font-weight="400" class="muted" text-anchor="start">Higher is better</text>
+  <line x1="648.0" y1="205" x2="648.0" y2="601" stroke="#8ca0b1"/>
+  <text x="648.0" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">0%</text>
+  <line x1="716.75" y1="205" x2="716.75" y2="601" stroke="#e0e7ed"/>
+  <text x="716.75" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">25%</text>
+  <line x1="785.5" y1="205" x2="785.5" y2="601" stroke="#e0e7ed"/>
+  <text x="785.5" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">50%</text>
+  <line x1="854.25" y1="205" x2="854.25" y2="601" stroke="#e0e7ed"/>
+  <text x="854.25" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">75%</text>
+  <line x1="923.0" y1="205" x2="923.0" y2="601" stroke="#e0e7ed"/>
+  <text x="923.0" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">100%</text>
+  <rect x="648" y="219" width="90.7500" height="15" rx="4" fill="#667892" data-scope="overall" data-system="baseline" data-metric="mean_precision_at_k" data-value="0.33"/>
+  <text x="746.75" y="232" font-size="15" font-weight="650" class="value" text-anchor="start">33.0%</text>
+  <rect x="648" y="242" width="204.6000" height="15" rx="4" fill="#08735d" data-scope="overall" data-system="new" data-metric="mean_precision_at_k" data-value="0.744"/>
+  <text x="860.60" y="255" font-size="15" font-weight="650" class="value" text-anchor="start">74.4%</text>
+  <rect x="648" y="300" width="95.7000" height="15" rx="4" fill="#667892" data-scope="hard_only" data-system="baseline" data-metric="mean_precision_at_k" data-value="0.348"/>
+  <text x="751.70" y="313" font-size="15" font-weight="500" class="value" text-anchor="start">34.8%</text>
+  <rect x="648" y="323" width="227.7000" height="15" rx="4" fill="#08735d" data-scope="hard_only" data-system="new" data-metric="mean_precision_at_k" data-value="0.828"/>
+  <text x="883.70" y="336" font-size="15" font-weight="500" class="value" text-anchor="start">82.8%</text>
+  <rect x="648" y="381" width="116.6000" height="15" rx="4" fill="#667892" data-scope="hard_structured" data-system="baseline" data-metric="mean_precision_at_k" data-value="0.424"/>
+  <text x="772.60" y="394" font-size="15" font-weight="500" class="value" text-anchor="start">42.4%</text>
+  <rect x="648" y="404" width="251.9000" height="15" rx="4" fill="#08735d" data-scope="hard_structured" data-system="new" data-metric="mean_precision_at_k" data-value="0.916"/>
+  <text x="907.90" y="417" font-size="15" font-weight="500" class="value" text-anchor="start">91.6%</text>
+  <rect x="648" y="462" width="82.5000" height="15" rx="4" fill="#667892" data-scope="hard_semantic" data-system="baseline" data-metric="mean_precision_at_k" data-value="0.3"/>
+  <text x="738.50" y="475" font-size="15" font-weight="500" class="value" text-anchor="start">30.0%</text>
+  <rect x="648" y="485" width="151.8000" height="15" rx="4" fill="#08735d" data-scope="hard_semantic" data-system="new" data-metric="mean_precision_at_k" data-value="0.552"/>
+  <text x="807.80" y="498" font-size="15" font-weight="500" class="value" text-anchor="start">55.2%</text>
+  <rect x="648" y="543" width="68.2000" height="15" rx="4" fill="#667892" data-scope="hard_structured_semantic" data-system="baseline" data-metric="mean_precision_at_k" data-value="0.248"/>
+  <text x="724.20" y="556" font-size="15" font-weight="500" class="value" text-anchor="start">24.8%</text>
+  <rect x="648" y="566" width="187.0000" height="15" rx="4" fill="#08735d" data-scope="hard_structured_semantic" data-system="new" data-metric="mean_precision_at_k" data-value="0.68"/>
+  <text x="843.00" y="579" font-size="15" font-weight="500" class="value" text-anchor="start">68.0%</text>
+  <text x="1032" y="163" font-size="21" font-weight="700" class="" text-anchor="start">Hard-constraint violations@10</text>
+  <text x="1032" y="186" font-size="15" font-weight="400" class="muted" text-anchor="start">Lower is better</text>
+  <line x1="1032.0" y1="205" x2="1032.0" y2="601" stroke="#8ca0b1"/>
+  <text x="1032.0" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">0%</text>
+  <line x1="1100.75" y1="205" x2="1100.75" y2="601" stroke="#e0e7ed"/>
+  <text x="1100.75" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">25%</text>
+  <line x1="1169.5" y1="205" x2="1169.5" y2="601" stroke="#e0e7ed"/>
+  <text x="1169.5" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">50%</text>
+  <line x1="1238.25" y1="205" x2="1238.25" y2="601" stroke="#e0e7ed"/>
+  <text x="1238.25" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">75%</text>
+  <line x1="1307.0" y1="205" x2="1307.0" y2="601" stroke="#e0e7ed"/>
+  <text x="1307.0" y="624" font-size="14" font-weight="400" class="muted" text-anchor="middle">100%</text>
+  <rect x="1032" y="219" width="122.9250" height="15" rx="4" fill="#667892" data-scope="overall" data-system="baseline" data-metric="mean_violation_rate_at_k" data-value="0.447"/>
+  <text x="1162.92" y="232" font-size="15" font-weight="650" class="value" text-anchor="start">44.7%</text>
+  <rect x="1032" y="242" width="33.0000" height="15" rx="4" fill="#08735d" data-scope="overall" data-system="new" data-metric="mean_violation_rate_at_k" data-value="0.12"/>
+  <text x="1073.00" y="255" font-size="15" font-weight="650" class="value" text-anchor="start">12.0%</text>
+  <rect x="1032" y="300" width="179.3000" height="15" rx="4" fill="#667892" data-scope="hard_only" data-system="baseline" data-metric="mean_violation_rate_at_k" data-value="0.652"/>
+  <text x="1219.30" y="313" font-size="15" font-weight="500" class="value" text-anchor="start">65.2%</text>
+  <rect x="1032" y="323" width="47.3000" height="15" rx="4" fill="#08735d" data-scope="hard_only" data-system="new" data-metric="mean_violation_rate_at_k" data-value="0.17200000000000001"/>
+  <text x="1087.30" y="336" font-size="15" font-weight="500" class="value" text-anchor="start">17.2%</text>
+  <rect x="1032" y="381" width="90.2000" height="15" rx="4" fill="#667892" data-scope="hard_structured" data-system="baseline" data-metric="mean_violation_rate_at_k" data-value="0.328"/>
+  <text x="1130.20" y="394" font-size="15" font-weight="500" class="value" text-anchor="start">32.8%</text>
+  <rect x="1032" y="404" width="23.1000" height="15" rx="4" fill="#08735d" data-scope="hard_structured" data-system="new" data-metric="mean_violation_rate_at_k" data-value="0.084"/>
+  <text x="1063.10" y="417" font-size="15" font-weight="500" class="value" text-anchor="start">8.4%</text>
+  <rect x="1032" y="462" width="132.0000" height="15" rx="4" fill="#667892" data-scope="hard_semantic" data-system="baseline" data-metric="mean_violation_rate_at_k" data-value="0.48"/>
+  <text x="1172.00" y="475" font-size="15" font-weight="500" class="value" text-anchor="start">48.0%</text>
+  <rect x="1032" y="485" width="39.6000" height="15" rx="4" fill="#08735d" data-scope="hard_semantic" data-system="new" data-metric="mean_violation_rate_at_k" data-value="0.144"/>
+  <text x="1079.60" y="498" font-size="15" font-weight="500" class="value" text-anchor="start">14.4%</text>
+  <rect x="1032" y="543" width="90.2000" height="15" rx="4" fill="#667892" data-scope="hard_structured_semantic" data-system="baseline" data-metric="mean_violation_rate_at_k" data-value="0.328"/>
+  <text x="1130.20" y="556" font-size="15" font-weight="500" class="value" text-anchor="start">32.8%</text>
+  <rect x="1032" y="566" width="22.0000" height="15" rx="4" fill="#08735d" data-scope="hard_structured_semantic" data-system="new" data-metric="mean_violation_rate_at_k" data-value="0.08"/>
+  <text x="1062.00" y="579" font-size="15" font-weight="500" class="value" text-anchor="start">8.0%</text>
+  <text x="38" y="239" font-size="18" font-weight="700" class="" text-anchor="start">Overall</text>
+  <text x="38" y="261" font-size="14" font-weight="400" class="muted" text-anchor="start">100 queries</text>
+  <text x="38" y="320" font-size="18" font-weight="600" class="" text-anchor="start">Hard filters only</text>
+  <text x="38" y="342" font-size="14" font-weight="400" class="muted" text-anchor="start">25 queries</text>
+  <line x1="38" y1="355" x2="1401" y2="355" stroke="#eef2f6"/>
+  <text x="38" y="401" font-size="18" font-weight="600" class="" text-anchor="start">Hard filters + numeric</text>
+  <text x="38" y="423" font-size="14" font-weight="400" class="muted" text-anchor="start">25 queries</text>
+  <line x1="38" y1="436" x2="1401" y2="436" stroke="#eef2f6"/>
+  <text x="38" y="482" font-size="18" font-weight="600" class="" text-anchor="start">Hard filters + descriptive</text>
+  <text x="38" y="504" font-size="14" font-weight="400" class="muted" text-anchor="start">25 queries</text>
+  <line x1="38" y1="517" x2="1401" y2="517" stroke="#eef2f6"/>
+  <text x="38" y="563" font-size="18" font-weight="600" class="" text-anchor="start">Hard filters + both</text>
+  <text x="38" y="585" font-size="14" font-weight="400" class="muted" text-anchor="start">25 queries</text>
+</svg>
