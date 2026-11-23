@@ -4,7 +4,9 @@ import homeBackground from "./assets/california-coast-at-dusk.jpg";
 import SearchCriteria from "./SearchCriteria.jsx";
 import "./App.css";
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:8000"
+  : "/api";
 const SOURCE_REPOSITORY_URL = "https://github.com/dongxiaox0728/IDX-nlp";
 
 const Icon = ({ name, size = 18 }) => {
