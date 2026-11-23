@@ -1,4 +1,20 @@
-from scripts.bm25_search import BM25Searcher
+import unittest
+
+import numpy as np
+from rank_bm25 import BM25Okapi
+
+from scripts.bm25_search import BM25Index, BM25Searcher
+
+
+class BM25IndexTests(unittest.TestCase):
+    def test_compact_index_matches_reference_scores(self):
+        corpus = [[], ["home", "home", "pool"], ["home", "view"], ["home", "pool", "pool"]]
+        reference = BM25Okapi(corpus)
+        index = BM25Index(iter(corpus))
+
+        for query in (["home"], ["pool", "pool", "view"], ["unknown"], []):
+            with self.subTest(query=query):
+                np.testing.assert_array_equal(index.get_scores(query), reference.get_scores(query))
 
 
 def main() -> None:

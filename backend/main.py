@@ -5,6 +5,7 @@ import hashlib
 import json
 import logging
 from pathlib import Path
+from threading import Lock
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from redis.exceptions import RedisError
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -36,6 +37,7 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 search_service = SearchService()
+bm25_load_lock = Lock()
 
 
 @lru_cache(maxsize=None)
@@ -265,7 +267,9 @@ def bm25_search_listings(request: Request, body: SearchRequest):
         if cached is not None:
             return cached
 
-        results = component("bm25").search(
+        with bm25_load_lock:
+            searcher = component("bm25")
+        results = searcher.search(
             query=body.query,
             top_k=body.top_k
         )

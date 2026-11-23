@@ -1,17 +1,69 @@
 from __future__ import annotations
 
+import math
 import re
+from array import array
+from collections import Counter
+from collections.abc import Iterable
 from pathlib import Path
-from sys import intern
 from typing import Any
 
 import numpy as np
 import pandas as pd
-from rank_bm25 import BM25Okapi
 
 
 DATA_PATH = Path("data/processed/listing_full_cleaned.csv")
 TEXT_COLUMN = "cleaned_remarks"
+
+
+class BM25Index:
+    K1 = 1.5
+    B = 0.75
+    EPSILON = 0.25
+
+    def __init__(self, corpus: Iterable[list[str]]) -> None:
+        self.postings: dict[str, tuple[array, array]] = {}
+        lengths = []
+        for position, tokens in enumerate(corpus):
+            lengths.append(len(tokens))
+            for token, count in Counter(tokens).items():
+                if token not in self.postings:
+                    self.postings[token] = (array("I"), array("I"))
+                positions, frequencies = self.postings[token]
+                positions.append(position)
+                frequencies.append(count)
+
+        if not self.postings:
+            raise ValueError("The BM25 dataset contains no searchable words.")
+
+        self.size = len(lengths)
+        average_length = sum(lengths) / self.size
+        self.normalization = self.K1 * (1 - self.B + self.B * np.asarray(lengths) / average_length)
+        idf = {}
+        idf_sum = 0.0
+        for token, (positions, _) in self.postings.items():
+            document_frequency = len(positions)
+            value = math.log(self.size - document_frequency + 0.5) - math.log(document_frequency + 0.5)
+            idf[token] = value
+            idf_sum += value
+
+        # Match BM25Okapi's floor for terms that appear in more than half the corpus.
+        idf_floor = self.EPSILON * (idf_sum / len(idf))
+        self.idf = {token: value if value >= 0 else idf_floor for token, value in idf.items()}
+
+    def get_scores(self, query: Iterable[str]) -> np.ndarray:
+        scores = np.zeros(self.size)
+        for token in query:
+            posting = self.postings.get(token)
+            if posting is None:
+                continue
+            position_buffer, frequency_buffer = posting
+            positions = np.frombuffer(position_buffer, dtype=np.uintc)
+            frequencies = np.frombuffer(frequency_buffer, dtype=np.uintc)
+            scores[positions] += self.idf[token] * (
+                frequencies * (self.K1 + 1) / (frequencies + self.normalization[positions])
+            )
+        return scores
 
 
 def clean_value(value: Any) -> Any:
@@ -35,7 +87,7 @@ class BM25Searcher:
         self.text_column = text_column
 
         self.metadata: pd.DataFrame | None = None
-        self.bm25: BM25Okapi | None = None
+        self.bm25: BM25Index | None = None
 
     ##Convert text into lowercase alphanumeric tokens.
     @staticmethod
@@ -51,20 +103,16 @@ class BM25Searcher:
                 f"Dataset not found at: {self.data_path}"
             )
 
-        self.metadata = pd.read_csv(self.data_path)
+        metadata = pd.read_csv(self.data_path)
 
-        if self.text_column not in self.metadata.columns:
+        if self.text_column not in metadata.columns:
             raise ValueError(
                 f"Required column '{self.text_column}' was not found."
             )
 
-        remarks = self.metadata[self.text_column].fillna("").astype(str)
-        tokenized_corpus = (
-            [intern(token) for token in self.tokenize(remark)]
-            for remark in remarks
-        )
-
-        self.bm25 = BM25Okapi(tokenized_corpus)
+        remarks = metadata[self.text_column].fillna("").astype(str)
+        index = BM25Index(self.tokenize(remark) for remark in remarks)
+        self.metadata, self.bm25 = metadata, index
 
         print(
             f"BM25 searcher loaded successfully with "
