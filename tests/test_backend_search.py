@@ -20,6 +20,7 @@ from redis.exceptions import ConnectionError
 from backend import main
 from backend.search_service import SearchService, json_safe
 from scripts.hard_constraints_filter import HardConstraintsFilter
+from scripts.query_parser import QueryParser
 
 
 def parsed(text="", rules=None):
@@ -62,6 +63,23 @@ ROWS = [
 
 
 class SearchServiceTests(unittest.TestCase):
+    def test_typed_city_uses_the_same_database_lookup_as_search_options(self):
+        city_rows = [{"city": "Irvine"}, {"city": "San Luis Obispo"}]
+        bounds = [{"price": 900000, "bedrooms": 4, "bathrooms": 3}]
+        service = SearchService()
+        with (
+            patch.object(HardConstraintsFilter, "_fetch", side_effect=[city_rows, bounds, city_rows]) as fetch,
+            patch.object(QueryParser, "_load_database_cities") as docker_lookup,
+            patch.object(QueryParser, "_clean_semantics_with_llm", return_value="pool"),
+        ):
+            options = service.search_options()
+            query = service.parse("3-bedroom homes in San Luis Obispo with a pool")
+
+        self.assertIn("San Luis Obispo", options["cities"])
+        self.assertEqual(query["structured_filters"]["conditions"]["city"], "San Luis Obispo")
+        self.assertEqual(fetch.call_args_list[0], fetch.call_args_list[2])
+        docker_lookup.assert_not_called()
+
     def test_all_ranking_paths_and_frontend_fields(self):
         price = {"field": "price", "direction": "closest", "target": 700000}
         for text, rules, mode, first in [("", [], "newest", "A"),
@@ -173,12 +191,15 @@ class EndpointTests(unittest.TestCase):
 
     def test_search_delegates_and_old_cache_is_not_reused(self):
         legacy = "search:" + main.hashlib.sha256(b"query:5").hexdigest()
-        self.cache.get.side_effect = lambda key: json.dumps({"legacy":True}) if key == legacy else None
+        old_hybrid = "search:hybrid:v1:" + main.hashlib.sha256(
+            json.dumps(["query", 5, {}], sort_keys=True).encode()
+        ).hexdigest()
+        self.cache.get.side_effect = lambda key: json.dumps({"legacy": True}) if key in {legacy, old_hybrid} else None
         response = self.client.post("/search",json={"query":"query","top_k":5})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), self.response)
         self.service.search.assert_called_once_with(query="query", top_k=5)
-        self.assertTrue(self.cache.setex.call_args.args[0].startswith("search:hybrid:v1:"))
+        self.assertTrue(self.cache.setex.call_args.args[0].startswith("search:hybrid:v2:"))
 
     def test_cache_hit_skips_search_and_bad_json_is_ignored(self):
         self.cache.get.return_value = json.dumps(self.response)

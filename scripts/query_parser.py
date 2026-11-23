@@ -4,6 +4,7 @@ import re
 import os
 import subprocess
 import warnings
+from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
 from dotenv import load_dotenv
@@ -41,6 +42,8 @@ class QueryParser:
         docker_container: str | None = None,
         llm_cleanup: bool = True,
         cleanup_model: str | None = None,
+        *,
+        database_cities: Iterable[str] | None = None,
     ) -> None:
         self.llm_cleanup = llm_cleanup
         self.cleanup_model = cleanup_model or os.getenv("OPENAI_CLEANUP_MODEL", "gpt-6-astra")
@@ -62,14 +65,21 @@ class QueryParser:
             self.valid_cities.update({city.strip().lower(): city.strip()
                                       for city in cities if city.strip()})
         self.city_source = "local lookup" if self.valid_cities else "unavailable"
-        if load_database_cities:
-            database_cities = self._load_database_cities(
+        if database_cities is not None:
+            city_lookup = {
+                city.strip().lower(): city.strip()
+                for city in database_cities if city.strip()
+            }
+        elif load_database_cities:
+            city_lookup = self._load_database_cities(
                 database or os.getenv("MYSQL_DATABASE", "real_estate"),
                 docker_container or os.getenv("MYSQL_DOCKER_CONTAINER", "idx-nlp-mysql-1"),
             )
-            if database_cities:
-                self.valid_cities = database_cities
-                self.city_source = "rets_property database"
+        else:
+            city_lookup = {}
+        if city_lookup:
+            self.valid_cities = city_lookup
+            self.city_source = "rets_property database"
         self.valid_amenities = self._load_amenities(Path(amenities_path))
 
     def _load_database_cities(self, database: str, container: str) -> dict[str, str]:

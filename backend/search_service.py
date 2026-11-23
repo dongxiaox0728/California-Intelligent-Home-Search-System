@@ -111,7 +111,9 @@ class SearchService:
                 return deepcopy(cached[1])
             if self._parser is None:
                 from scripts.query_parser import QueryParser
-                self._parser = QueryParser()
+                self._parser = QueryParser(
+                    database_cities=self.orchestrator.hard_filter.cities()
+                )
             parsed = self._parser.parse(query)
             self._parsed[query] = (self._clock() + self._parse_ttl, deepcopy(parsed))
             self._parsed.move_to_end(query)

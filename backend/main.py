@@ -216,7 +216,7 @@ def search_listings(request: Request, body: RefinedSearchRequest):
         refinement_args = body.refinement_args()
         cache_input = json.dumps([body.query, body.top_k, refinement_args], sort_keys=True)
 
-        cache_key = "search:hybrid:v1:" + hashlib.sha256(
+        cache_key = "search:hybrid:v2:" + hashlib.sha256(
             cache_input.encode()
         ).hexdigest()
 

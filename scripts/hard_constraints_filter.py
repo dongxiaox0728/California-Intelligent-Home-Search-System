@@ -104,13 +104,17 @@ class HardConstraintsFilter:
         sql, parameters = self.build_query(parsed_query)
         return self._fetch(sql, parameters)
 
-    def search_options(self) -> dict[str, Any]:
+    def cities(self) -> list[str]:
         cities = self._fetch("""
             SELECT DISTINCT TRIM(`L_City`) AS city
             FROM `rets_property`
             WHERE TRIM(`L_City`) <> ''
             ORDER BY city
         """)
+        return [row["city"] for row in cities]
+
+    def search_options(self) -> dict[str, Any]:
+        cities = self.cities()
         bounds, = self._fetch("""
             SELECT MAX(CASE WHEN `L_SystemPrice` BETWEEN 0 AND 100000000 THEN `L_SystemPrice` END) AS price,
                    MAX(CASE WHEN `L_Keyword2` BETWEEN 0 AND 20 THEN `L_Keyword2` END) AS bedrooms,
@@ -118,7 +122,7 @@ class HardConstraintsFilter:
             FROM `rets_property`
         """)
         return {
-            "cities": [row["city"] for row in cities],
+            "cities": cities,
             "maxima": {field: float(value) for field, value in bounds.items() if value is not None},
         }
 
