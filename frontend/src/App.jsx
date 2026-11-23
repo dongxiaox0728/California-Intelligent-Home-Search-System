@@ -280,12 +280,24 @@ const QUERY_FIELD_ICONS = {
 
 const requestJson = async (url, options) => {
   const response = await fetch(url, options);
-  const data = await response.json();
+  options.signal.throwIfAborted();
+  const contentType = response.headers.get("content-type") ?? "";
+  const fallback = response.status >= 500
+    ? "The search service is temporarily unavailable. Please try again."
+    : `The search service returned an unexpected response (HTTP ${response.status}).`;
+  if (!contentType.includes("application/json")) throw new Error(fallback);
 
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    options.signal.throwIfAborted();
+    throw new Error(fallback);
+  }
   options.signal.throwIfAborted();
 
   if (!response.ok) {
-    throw new Error(data.detail || `Request failed with status ${response.status}`);
+    throw new Error(typeof data?.detail === "string" ? data.detail : fallback);
   }
 
   return data;

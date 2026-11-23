@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from sys import intern
 from typing import Any
 
 import numpy as np
@@ -57,17 +58,11 @@ class BM25Searcher:
                 f"Required column '{self.text_column}' was not found."
             )
 
-        remarks = (
-            self.metadata[self.text_column]
-            .fillna("")
-            .astype(str)
-            .tolist()
-        )
-
-        tokenized_corpus = [
-            self.tokenize(remark)
+        remarks = self.metadata[self.text_column].fillna("").astype(str)
+        tokenized_corpus = (
+            [intern(token) for token in self.tokenize(remark)]
             for remark in remarks
-        ]
+        )
 
         self.bm25 = BM25Okapi(tokenized_corpus)
 

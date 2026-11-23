@@ -134,10 +134,13 @@ class SemanticSearcher:
                 "and build_faiss_index.py to create manifests. Original search() still works."
             )
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        with self.index_path.open("rb") as index_file, self.metadata_path.open("rb") as metadata_file:
+            index_digest = hashlib.file_digest(index_file, "sha256").hexdigest()
+            metadata_digest = hashlib.file_digest(metadata_file, "sha256").hexdigest()
         if (manifest["model_name"] != self.model_name
                 or manifest["dimensions"] != self.index.d
-                or manifest["index_sha256"] != hashlib.sha256(self.index_path.read_bytes()).hexdigest()
-                or manifest["metadata_sha256"] != hashlib.sha256(self.metadata_path.read_bytes()).hexdigest()):
+                or manifest["index_sha256"] != index_digest
+                or manifest["metadata_sha256"] != metadata_digest):
             raise ValueError("Model, index or metadata does not match the saved manifest.")
         ids = self.metadata["L_ListingID"].str.strip()
         if (ids.isna().any() or ids.eq("").any() or ids.duplicated().any()
@@ -186,9 +189,12 @@ class SemanticSearcher:
                     or not np.isfinite(query_vector).all()
                     or np.linalg.norm(query_vector) == 0):
                 raise ValueError("Query embedding is invalid or incompatible with the index.")
-            # Reuse the normalized vectors already saved in the flat FAISS index.
-            vectors = np.vstack([self.index.reconstruct(int(pos)) for pos in positions])
-            scores = vectors @ query_vector[0]
+            scores = np.empty(len(positions), dtype=np.float32)
+            batch_size = 2048
+            for start in range(0, len(positions), batch_size):
+                stop = min(start + batch_size, len(positions))
+                vectors = self.index.reconstruct_batch(positions[start:stop])
+                scores[start:stop] = vectors @ query_vector[0]
             order = np.argsort(-scores, kind="stable")[:top_k]
         else:
             order = np.arange(min(top_k, len(positions)))

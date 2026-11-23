@@ -143,16 +143,14 @@ class SearchOrchestrator:
                     query=semantic_text, eligible_ids=[row['L_ListingID'] for row in candidates],
                     top_k=len(candidates))
                 by_id = {row['L_ListingID']: row for row in candidates}
+                semantic.sort(key=lambda row: (-row['similarity_score'], str(row['L_ListingID']).strip()))
                 ranked = []
-                for result in semantic:
+                for result in semantic[:top_k]:
                     row = dict(result)
                     row.update(by_id[str(result['L_ListingID']).strip()])
                     # Restore scoring fields after merging database attributes.
                     row.update(similarity_score=result['similarity_score'], rank=result['rank'])
                     ranked.append(self._single_signal(row, 'semantic'))
-                ranked.sort(key=lambda row: row['L_ListingID'])
-                ranked.sort(key=lambda row: row['final_score'], reverse=True)
-                ranked = ranked[:top_k]
         elif mode == 'structured':
             ranked = [self._single_signal(row, mode) for row in
                       self.structured_ranker.rank(rows, rules, top_k=top_k)]
